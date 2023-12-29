@@ -284,38 +284,111 @@ document.addEventListener("DOMContentLoaded", () => {
   toggleVisibility(curPanePairIndex, true);
   updateDots(0);
 
-  // Shift Panes function.
+  // // Shift Panes function.
+  // const shiftPanes = (shift) => {
+  //   toggleVisibility(curPanePairIndex, false);
+  //   curPanePairIndex += shift;
+  //   if (curPanePairIndex < 0) {
+  //     curPanePairIndex = 0;
+  //   } else if (curPanePairIndex >= numPanePairs) {
+  //     curPanePairIndex = numPanePairs - 1;
+  //   }
+  //   toggleVisibility(curPanePairIndex, true);
+  //   updateDots(curPanePairIndex);
+  // }; 
+
+  // // Assuming each pair of panes has the same width as the carousel window
+  // const pairWidth = document.querySelector('.carousel-window').offsetWidth;
+
+  // const shiftPanes = (shift) => {
+  //   toggleVisibility(curPanePairIndex, false);
+  //   curPanePairIndex += shift;
+
+  //   if (curPanePairIndex < 0) {
+  //     curPanePairIndex = 0;
+  //   } else if (curPanePairIndex >= numPanePairs) {
+  //     curPanePairIndex = numPanePairs - 1;
+  //   }
+
+  //   const shiftAmount = -pairWidth * curPanePairIndex;
+  //   document.querySelector('.carousel-window').style.transform = `translateX(${shiftAmount}px)`;
+
+  //   toggleVisibility(curPanePairIndex, true);
+  //   updateDots(curPanePairIndex);
+  // };
+
+  // Assuming each pair of panes has the same width as the carousel window
+  const pairWidth = document.querySelector('.carousel-window').offsetWidth;
+
   const shiftPanes = (shift) => {
+    // Hide current panes
     toggleVisibility(curPanePairIndex, false);
+
+    // Calculate new index
     curPanePairIndex += shift;
     if (curPanePairIndex < 0) {
       curPanePairIndex = 0;
     } else if (curPanePairIndex >= numPanePairs) {
       curPanePairIndex = numPanePairs - 1;
     }
+
+    // Apply the shift to each pair of panes
+    for (let i = 0; i < numPanePairs; i++) {
+      const pairStartIndex = i * 2;
+      const pane1 = paneList[pairStartIndex];
+      const pane2 = paneList[pairStartIndex + 1];
+
+      const shiftAmount = -pairWidth * curPanePairIndex;
+      pane1.style.transform = `translateX(${shiftAmount}px)`;
+      pane2.style.transform = `translateX(${shiftAmount}px)`;
+    }
+
+    // Show new panes
     toggleVisibility(curPanePairIndex, true);
     updateDots(curPanePairIndex);
-  }; 
+  };
 
   // Next Button
+  // document.getElementById("next-button").addEventListener("click", () => {
+  //   if (curPanePairIndex < numPanePairs - 1) {
+  //     shiftPanes(1);
+  //   } else {
+  //     // Adding the shake animation
+  //     const panes = document.querySelectorAll(".pane");
+  //     panes.forEach((pane) => {
+  //       pane.classList.add("shake-animation");
+  //     });
+
+  //     // Remove the shake-animation class after the animation is done to allow re-triggering
+  //     setTimeout(() => {
+  //       panes.forEach((pane) => {
+  //         pane.classList.remove("shake-animation");
+  //       });
+  //     }, 300);  // The duration of the shake animation in milliseconds
+  //   }
+  // });
   document.getElementById("next-button").addEventListener("click", () => {
     if (curPanePairIndex < numPanePairs - 1) {
       shiftPanes(1);
     } else {
-      // Adding the shake animation
-      const panes = document.querySelectorAll(".pane");
-      panes.forEach((pane) => {
-        pane.classList.add("shake-animation");
-      });
-
-      // Remove the shake-animation class after the animation is done to allow re-triggering
-      setTimeout(() => {
-        panes.forEach((pane) => {
-          pane.classList.remove("shake-animation");
-        });
-      }, 300);  // The duration of the shake animation in milliseconds
+      // Trigger shake animation
+      triggerShakeAnimation();
     }
   });
+  
+  function triggerShakeAnimation() {
+    const panes = document.querySelectorAll(".pane");
+    panes.forEach((pane) => {
+      pane.classList.add("shake-animation");
+    });
+  
+    // Remove the shake-animation class after the animation is done to allow re-triggering
+    setTimeout(() => {
+      panes.forEach((pane) => {
+        pane.classList.remove("shake-animation");
+      });
+    }, 300); // The duration of the shake animation in milliseconds
+  }
 
   // Previous Button
   document.getElementById("prev-button").addEventListener("click", () => {
