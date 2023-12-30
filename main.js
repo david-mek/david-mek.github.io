@@ -318,7 +318,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // };
 
   // Assuming each pair of panes has the same width as the carousel window
-  const pairWidth = document.querySelector('.carousel-window').offsetWidth;
+  const singlePaneWidth = document.querySelector('.pane').offsetWidth;
+  const pairWidth = singlePaneWidth * 2 + 40;
+
+  console.log("Width of a single pane:", singlePaneWidth);
+  console.log("Total width of a pair of panes:", pairWidth);
 
   const shiftPanes = (shift) => {
     // Hide current panes

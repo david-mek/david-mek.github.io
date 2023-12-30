@@ -975,16 +975,18 @@ nav img {
 } */
 
 .pane {
-    flex: 0 0 calc(50% - 20px);  /* The width of the pane */
+    /* Adjust pane width via flex. */
+    flex: 0 0 calc(50% - 20px);
     margin: 10px;
     border: 2px solid var(--blueColor);
     display: flex;
     flex-direction: column;  /* Use flex layout to divide the height equally */
     border-radius: 12px;
     transition: opacity 0.3s ease-in-out;
-    width: 350px;
-    height: 580px;
-    z-index: 30;
+    /* width: 21.875rem; */
+    width: 14.5rem;
+    height: 36.25rem;
+    /* z-index: 30; */
 }
 
 .pane.hidden {
@@ -999,7 +1001,6 @@ nav img {
     transition: visibility 0s, opacity 0.5s linear;
 }
   
-
 .pane-image {
     flex: 0.5;  /* Takes up 50% of the height */
     overflow: hidden;  /* To ensure that the image does not overflow */
@@ -1078,7 +1079,7 @@ nav img {
     align-items: center;
     z-index: 20;
     justify-content: center;
-    transition: background-color 0.5s ease, color 0.5s ease; /* NEW: Add transition */
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .carousel-button i {

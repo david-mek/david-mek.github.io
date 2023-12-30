@@ -75,6 +75,7 @@
                 <div class="btn_row">
                     <a href="javascript:void(0);" class="view_skills_btn" onclick="recessButton(this)">View Skills</a>
                     <a href="javascript:void(0);" class="view_projects_btn" onclick="recessButton(this)">View Projects</a>
+                    <a href="javascript:void(0);" class="view_projects_btn" onclick="recessButton(this)">Resumé</a>
                 </div>
             </div>
         </div>
@@ -433,28 +434,101 @@
                 <i class="fa-solid fa-angle-left"></i>
             </div>
             <div class="carousel-window">
+                <!-- Intro Computer Architecture Panes (EECS 370) -->
                 <!-- Pane #1 -->
-                <div class="pane" data-topic="DSA">
+                <div class="pane" data-topic="CA">
                     <div class="pane-image">
-                        <img src="./Images/countess.jpg" alt="DSA Project">
+                        <img src="./Images/cpucache2.jpg" alt="DSA Project">
                     </div>
                     <div class="pane-content">
                         <div class="lock-icon">
                             <i class="fa fa-lock"></i>
                             <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
                         </div>
-                        <h2 class="pane-c-title">Rescue the Countess Game</h2>
+                        <h2 class="pane-c-title">Dynamic CPU Cache Simulator</h2>
                         <h3 class="pane-c-date-text">Date</h3>
-                        <p class="pane-date">September 2022</p>
+                        <p class="pane-date">April 2023</p>
                         <h3 class="desc-text">Description</h3>
-                        <p class="desc">Created a terminal game in which map data is translated into a 3D container and obstacles and enemies are discerned before utilizing graph search and route tracing using either BFS & DFS to find the optimal route to the countess.</p>
+                        <p class="desc">Implemented a dynamic cache simulator which worked in tandem with a LC-2K ISA CPU simulator to move
+                                        commonly accessed data into the cache, reducing CPU cycle overhead for program execution. The
+                                        simulator could assume fully associative, direct-mapped, and set-associative modes with an LRU eviction
+                                        policy and an allocate-on-write and write-back data policy.
+                        </p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">Breadth First Search · Depth First Search · File Streams & I/O · Command Line Parsing · Arrays & Containers · Stacks & Queues</p>
+                        <p class="pane-concept-text">MST Algorithms · Prim's Algorithm · Kruskal's Algorithm · Branch & Bound Agorithms · TSP Heuristics · Graph Visualization Tools</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">C</p>
+                    </div>
+                </div>
+                <!-- Pane #2 -->
+                <div class="pane" data-topic="CA">
+                    <div class="pane-image">
+                        <img src="./Images/pipelinedcpu.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">Pipelined CPU Simulator</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">March 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">Implemented a 5-stage pipelined LC-2K ISA CPU simulator program in C which executed LC-2K ISA machine
+                                        code and output all register and memory contents at every CPU cycle during runtime. The simulated CPU
+                                        also featured internal register forwarding and utilized "detect and stall" as the heuristic for dealing with 
+                                        control hazards and data hazards.
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">MST Algorithms · Prim's Algorithm · Kruskal's Algorithm · Branch & Bound Agorithms · TSP Heuristics · Graph Visualization Tools</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">C/C++</p>
+                    </div>
+                </div>
+                <!-- Data Structures & Algorithms Panes (EECS 281)-->
+                <!-- Pane #1 -->
+                <div class="pane" data-topic="DSA">
+                    <div class="pane-image">
+                        <img src="./Images/graphs3.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">Among Us Map Traversal</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">December 2022</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">Created a terminal program which read in an Among Us map and utilized graph algorithms to find the most optimal route through the vents to traverse the entire map. The program featured a fast mode (which used either a farthest insertion or nearest neighbor TSP hueristic) and an optimal mode which used a slower branch and bound algorithm w/ pruning to find the best possible TSP solution.</p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">MST Algorithms · Prim's Algorithm · Kruskal's Algorithm · Branch & Bound Agorithms · TSP Heuristics · Graph Visualization Tools</p>
                         <h3 class="languages-text">Language(s)</h3>
                         <p class="pane-c-languages">C/C++</p>
                     </div>
                 </div>
                 <!-- Pane #2 -->
+                <div class="pane" data-topic="DSA">
+                    <div class="pane-image">
+                        <img src="./Images/database2.jpg" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">SillyQL Database</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">November 2022</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">Created a relational database operating on a subset of the SQL language which we dubbed "SillyQL". This database was designed to store tables containing various primitive data related to sales and placed a heavy emphasis on performance and memory overhead which was achieved with several STL data structures and tricks.</p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">Hash Tables · Collision Resolution · Tree ADTs · BSTs & AVL Trees · Standard Template Library · Stacks & Queues</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">C/C++</p>
+                    </div>
+                </div>
+                <!-- Pane #3 -->
                 <div class="pane" data-topic="DSA">
                     <div class="pane-image">
                         <img src="./Images/zombies.jpg" alt="DSA Project">
@@ -475,44 +549,23 @@
                         <p class="pane-c-languages">C/C++</p>
                     </div>
                 </div>
-                <!-- Pane #3 -->
-                <div class="pane" data-topic="DSA">
-                    <div class="pane-image">
-                        <img src="./Images/dsa.jpg" alt="DSA Project">
-                    </div>
-                    <div class="pane-content">
-                        <div class="lock-icon">
-                            <i class="fa fa-lock"></i>
-                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
-                        </div>
-                        <h2 class="pane-c-title">SillyQL Database</h2>
-                        <h3 class="pane-c-date-text">Date</h3>
-                        <p class="pane-date">November 2022</p>
-                        <h3 class="desc-text">Description</h3>
-                        <p class="desc">Created a relational database operating on a subset of the SQL language which we dubbed "SillyQL". This database was designed to store tables containing various primitive data related to sales and placed a heavy emphasis on performance and memory overhead which was achieved with several STL data structures and tricks.</p>
-                        <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">Hash Tables · Collision Resolution · Tree ADTs · BSTs & AVL Trees · Standard Template Library · Stacks & Queues</p>
-                        <h3 class="languages-text">Language(s)</h3>
-                        <p class="pane-c-languages">C/C++</p>
-                    </div>
-                </div>
                 <!-- Pane #4 -->
                 <div class="pane" data-topic="DSA">
                     <div class="pane-image">
-                        <img src="./Images/dsa.jpg" alt="DSA Project">
+                        <img src="./Images/countess.jpg" alt="DSA Project">
                     </div>
                     <div class="pane-content">
                         <div class="lock-icon">
                             <i class="fa fa-lock"></i>
                             <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
                         </div>
-                        <h2 class="pane-c-title">Among Us w/ Graph Algorithms</h2>
+                        <h2 class="pane-c-title">Rescue the Countess Game</h2>
                         <h3 class="pane-c-date-text">Date</h3>
-                        <p class="pane-date">December 2022</p>
+                        <p class="pane-date">September 2022</p>
                         <h3 class="desc-text">Description</h3>
-                        <p class="desc">Created a terminal program which read in an Among Us map and utilized graph algorithms to find the most optimal route through the vents to traverse the entire map. The program featured a fast mode (which used either a farthest insertion or nearest neighbor TSP hueristic) and an optimal mode which used a slower branch and bound algorithm w/ pruning to find the best possible TSP solution.</p>
+                        <p class="desc">Created a terminal game in which map data is translated into a 3D container and obstacles and enemies are discerned before utilizing graph search and route tracing using either BFS & DFS to find the optimal route to the countess.</p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">MST Algorithms · Prim's Algorithm · Kruskal's Algorithm · Branch & Bound Agorithms · TSP Heuristics · Graph Visualization Tools</p>
+                        <p class="pane-concept-text">Breadth First Search · Depth First Search · File Streams & I/O · Command Line Parsing · Arrays & Containers · Stacks & Queues</p>
                         <h3 class="languages-text">Language(s)</h3>
                         <p class="pane-c-languages">C/C++</p>
                     </div>
@@ -524,7 +577,7 @@
         </div>
         <div class="carousel-indicator">
             <span class="carousel-dot"></span>
-            <!-- More dots as needed -->
+            <span class="carousel-dot"></span>
             <span class="carousel-dot"></span>
             <!-- <span class="carousel-dot"></span>
             <span class="carousel-dot"></span> -->
