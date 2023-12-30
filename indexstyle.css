@@ -917,35 +917,39 @@ nav img {
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: start;
+    font-family: var(--interFont);
 }
 
 .exclamation-icon {
     position: relative;
     cursor: pointer;
-    font-size: 24px;
-    margin-left: 10px; /* Space between subtitle and icon */
+    font-size: 1.5rem;
+    margin-left: 0.625rem; /* Space between subtitle and icon */
+    margin-bottom: 1.25rem;
+    color: var(--blueColor);
 }
 
 .exclamation-icon .tooltip {
     position: absolute;
-    top: 1.25rem;
-    left: 0;
+    top: 50%; /* Adjust this value as needed */
+    left: 140%; /* Positions the tooltip to the right of the icon */
+    transform: translateY(-50%); /* Adjusts vertical alignment */
     background-color: #fff;
-    border: 0.0625rem solid #cccccc;
-    padding: 0.625rem;
-    width: 18.75rem;
+    border: 1px solid #cccccc;
+    padding: 10px;
+    width: 19.375rem; /* Adjust width as needed */
     z-index: 10;
-    font-size: 0.8125rem;
-    border-radius: 0.3125rem;
+    font-size: 13px;
+    border-radius: 5px;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, top 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
 .exclamation-icon:hover .tooltip {
     opacity: 1;
     visibility: visible;
-    top: 0;
 }
 
 .project-subtitle {
@@ -954,7 +958,7 @@ nav img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: auto; /* scaled this down from 100vw tro auto for warning icon */
     font-family: var(--interFont);
     font-weight: 400;
     font-size: 1rem;
@@ -1157,7 +1161,7 @@ nav img {
 
 .dot.active {
     background-color: maize; /* Replace with the actual color code */
-    transform: scale(1.2); /* Makes it a bit bigger */
+    /* transform: scale(1.2); Makes it a bit bigger */
     transition: all 0.3s ease;
 }
 
@@ -1194,12 +1198,12 @@ nav img {
 
 @keyframes activeDot {
     from {
-        width: 0.5rem;
-        height: 0.5rem;
+        width: 0.625rem;
+        height: 0.625rem;
     }
     to {
-        width: 0.5rem;
-        height: 0.5rem;
+        width: 0.625rem;
+        height: 0.625rem;
     }
 }
   

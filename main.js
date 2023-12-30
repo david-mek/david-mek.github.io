@@ -353,32 +353,32 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Next Button
-  // document.getElementById("next-button").addEventListener("click", () => {
-  //   if (curPanePairIndex < numPanePairs - 1) {
-  //     shiftPanes(1);
-  //   } else {
-  //     // Adding the shake animation
-  //     const panes = document.querySelectorAll(".pane");
-  //     panes.forEach((pane) => {
-  //       pane.classList.add("shake-animation");
-  //     });
-
-  //     // Remove the shake-animation class after the animation is done to allow re-triggering
-  //     setTimeout(() => {
-  //       panes.forEach((pane) => {
-  //         pane.classList.remove("shake-animation");
-  //       });
-  //     }, 300);  // The duration of the shake animation in milliseconds
-  //   }
-  // });
   document.getElementById("next-button").addEventListener("click", () => {
     if (curPanePairIndex < numPanePairs - 1) {
       shiftPanes(1);
     } else {
-      // Trigger shake animation
-      triggerShakeAnimation();
+      // Adding the shake animation
+      const panes = document.querySelectorAll(".pane");
+      panes.forEach((pane) => {
+        pane.classList.add("shake-animation");
+      });
+
+      // Remove the shake-animation class after the animation is done to allow re-triggering
+      setTimeout(() => {
+        panes.forEach((pane) => {
+          pane.classList.remove("shake-animation");
+        });
+      }, 300);  // The duration of the shake animation in milliseconds
     }
   });
+  // document.getElementById("next-button").addEventListener("click", () => {
+  //   if (curPanePairIndex < numPanePairs - 1) {
+  //     shiftPanes(1);
+  //   } else {
+  //     // Trigger shake animation
+  //     triggerShakeAnimation();
+  //   }
+  // });
   
   function triggerShakeAnimation() {
     const panes = document.querySelectorAll(".pane");
