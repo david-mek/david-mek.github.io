@@ -417,7 +417,13 @@
     <!-- Section 5 - Projects -->
     <section class="projects-section">
         <h1 class="project-title">My Projects</h1>
-        <h2 class="project-subtitle">Filter displayed projects using the buttons below.</h2>
+        <div class="subtitle-container">
+            <h2 class="project-subtitle">Filter displayed projects using the buttons below.</h2>
+            <div class="exclamation-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <div class="tooltip">Your tooltip text here.</div>
+            </div>
+        </div>
         <div class="filter-buttons">
             <button data-filter="Data Structures & Algorithms" class="filter-button selected"><span class="icon">✓</span>Data Structures & Algorithms</button>
             <button data-filter="Computer Architecture" class="filter-button selected"><span class="icon">✓</span>Computer Architecture</button>
@@ -438,14 +444,14 @@
                 <!-- Pane #1 -->
                 <div class="pane" data-topic="CA">
                     <div class="pane-image">
-                        <img src="./Images/cpucache2.jpg" alt="DSA Project">
+                        <img src="./Images/cachesim.png" alt="DSA Project">
                     </div>
                     <div class="pane-content">
                         <div class="lock-icon">
                             <i class="fa fa-lock"></i>
                             <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
                         </div>
-                        <h2 class="pane-c-title">Dynamic CPU Cache Simulator</h2>
+                        <h2 class="pane-c-title">Dynamic Unified Cache Simulator</h2>
                         <h3 class="pane-c-date-text">Date</h3>
                         <p class="pane-date">April 2023</p>
                         <h3 class="desc-text">Description</h3>
@@ -455,7 +461,7 @@
                                         policy and an allocate-on-write and write-back data policy.
                         </p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">MST Algorithms · Prim's Algorithm · Kruskal's Algorithm · Branch & Bound Agorithms · TSP Heuristics · Graph Visualization Tools</p>
+                        <p class="pane-concept-text">Write-through/Write-back Caching · Eviction Policies · Cache Associativity · Cache Configuration · Cache Misses</p>
                         <h3 class="languages-text">Language(s)</h3>
                         <p class="pane-c-languages">C</p>
                     </div>
@@ -480,9 +486,9 @@
                                         control hazards and data hazards.
                         </p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">MST Algorithms · Prim's Algorithm · Kruskal's Algorithm · Branch & Bound Agorithms · TSP Heuristics · Graph Visualization Tools</p>
+                        <p class="pane-concept-text">Pipeline Staging · Register Forwarding · Data Hazards · Control Hazards · Hazard Resolution Techniques · Performance Considerations</p>
                         <h3 class="languages-text">Language(s)</h3>
-                        <p class="pane-c-languages">C/C++</p>
+                        <p class="pane-c-languages">C</p>
                     </div>
                 </div>
                 <!-- Data Structures & Algorithms Panes (EECS 281)-->
@@ -504,7 +510,7 @@
                         <h3 class="concepts-text">Concepts</h3>
                         <p class="pane-concept-text">MST Algorithms · Prim's Algorithm · Kruskal's Algorithm · Branch & Bound Agorithms · TSP Heuristics · Graph Visualization Tools</p>
                         <h3 class="languages-text">Language(s)</h3>
-                        <p class="pane-c-languages">C/C++</p>
+                        <p class="pane-c-languages">C++ (v11)</p>
                     </div>
                 </div>
                 <!-- Pane #2 -->
@@ -525,7 +531,7 @@
                         <h3 class="concepts-text">Concepts</h3>
                         <p class="pane-concept-text">Hash Tables · Collision Resolution · Tree ADTs · BSTs & AVL Trees · Standard Template Library · Stacks & Queues</p>
                         <h3 class="languages-text">Language(s)</h3>
-                        <p class="pane-c-languages">C/C++</p>
+                        <p class="pane-c-languages">C++ (v11)</p>
                     </div>
                 </div>
                 <!-- Pane #3 -->
@@ -546,7 +552,7 @@
                         <h3 class="concepts-text">Concepts</h3>
                         <p class="pane-concept-text">Priority Queues · Streaming Algorithms · Random Number Generators · File Streams & I/O · Command Line Parsing · Dynamic Memory Management · STL Iterators</p>
                         <h3 class="languages-text">Language(s)</h3>
-                        <p class="pane-c-languages">C/C++</p>
+                        <p class="pane-c-languages">C++ (v11)</p>
                     </div>
                 </div>
                 <!-- Pane #4 -->
@@ -567,7 +573,7 @@
                         <h3 class="concepts-text">Concepts</h3>
                         <p class="pane-concept-text">Breadth First Search · Depth First Search · File Streams & I/O · Command Line Parsing · Arrays & Containers · Stacks & Queues</p>
                         <h3 class="languages-text">Language(s)</h3>
-                        <p class="pane-c-languages">C/C++</p>
+                        <p class="pane-c-languages">C++ (v11)</p>
                     </div>
                 </div>
             </div>

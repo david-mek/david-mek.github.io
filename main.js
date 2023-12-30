@@ -321,8 +321,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const singlePaneWidth = document.querySelector('.pane').offsetWidth;
   const pairWidth = singlePaneWidth * 2 + 40;
 
-  console.log("Width of a single pane:", singlePaneWidth);
-  console.log("Total width of a pair of panes:", pairWidth);
+  // console.log("Width of a single pane:", singlePaneWidth);
+  // console.log("Total width of a pair of panes:", pairWidth);
 
   const shiftPanes = (shift) => {
     // Hide current panes
