@@ -1025,7 +1025,7 @@ nav img {
     border-radius: 0.75rem;
     transition: opacity 0.3s ease-in-out;
     /* width: 21.875rem; */
-    width: 14.5rem;
+    width: 10.5rem;
     height: 36.25rem;
     /* z-index: 30; */
 }
@@ -1145,8 +1145,8 @@ nav img {
 
 .carousel-dot {
     display: inline-block;
-    width: 0.625rem;
-    height: 0.625rem;
+    width: 0.5rem;
+    height: 0.5rem;
     background-color: var(--maizeColor);
     border-radius: 50%;
     margin: 0.3125rem;
@@ -1155,8 +1155,8 @@ nav img {
 
 .carousel-dot.active {
     background-color: var(--blueColor);
-    width: 0.625rem;
-    height: 0.625rem;
+    width: 0.5rem;
+    height: 0.5rem;
 }
 
 .dot.active {
@@ -1198,12 +1198,12 @@ nav img {
 
 @keyframes activeDot {
     from {
-        width: 0.625rem;
-        height: 0.625rem;
+        width: 0.5rem;
+        height: 0.5rem;
     }
     to {
-        width: 0.625rem;
-        height: 0.625rem;
+        width: 0.5rem;
+        height: 0.5rem;
     }
 }
   
