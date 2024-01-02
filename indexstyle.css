@@ -1019,15 +1019,45 @@ nav img {
     /* Adjust pane width via flex. */
     flex: 0 0 calc(50% - 1.25rem);
     margin: 0.625rem;
+    position: relative;
     border: 0.125rem solid var(--blueColor);
     display: flex;
     flex-direction: column;  /* Use flex layout to divide the height equally */
     border-radius: 0.75rem;
     transition: opacity 0.3s ease-in-out;
     /* width: 21.875rem; */
-    width: 10.5rem;
+    width: 4.6rem;
     height: 36.25rem;
     /* z-index: 30; */
+}
+
+.indicator-box {
+    position: absolute;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    color: white;
+    font-family: var(--interFont);
+    font-weight: 600;
+    font-size: 0.8rem; /* Adjust size as needed */
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 5;
+}
+
+/* Indicator colors for every course. */
+.indicator-os {
+    background-color: #9300ee;
+}
+.indicator-gpu {
+    background-color: #06970b;
+}
+
+.indicator-ca {
+    background-color: #e02929;
+}
+
+.indicator-dsa {
+    background-color: #026ae0;
 }
 
 .pane.hidden {

@@ -440,9 +440,224 @@
                 <i class="fa-solid fa-angle-left"></i>
             </div>
             <div class="carousel-window">
+                <!-- Operating Systems Panes (EECS 482) -->
+                <!-- Pane #1 -->
+                <div class="pane" data-topic="OS">
+                    <div class="indicator-box indicator-os">Operating Systems</div>
+                    <div class="pane-image">
+                        <img src="./Images/fileserver3.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">Multithreaded Network File Server</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">December 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">Implemented an ACID compliant network file server using C++20 and Boost libraries for regex, thread,
+                                        and reader-writer lock functionality. The file server can be run on any x86 Unix machine, utilizes BSD
+                                        sockets for interprocess network communication, and has several design considerations for fault tolerance.
+                          
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">Boost threads · Fine-grained locking · Reader-writer locks · Boost regex · Remote procedure calls · BSD socket programming · Crash consistency methods</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">C++ (v20)</p>
+                    </div>
+                </div>
+                <!-- Pane #2 -->
+                <div class="pane" data-topic="OS">
+                    <div class="indicator-box indicator-os">Operating Systems</div>
+                    <div class="pane-image">
+                        <img src="./Images/vm2.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">Unix Virtual Memory Pager</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">November 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">Implemented a simulator of the pager portion of a Unix operating system kernel used to manage application
+                                      processes' virtual address space. The pager implemented system calls like the UNIX fork() which are used
+                                      to create, copy, destroy address spaces, allocate more space in existing ones, and switch between address
+                                      spaces. The pager features a simulated MMU and an interrupt handler vector table for memory faults.
+                          
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">Virtual memory · Single & multi-level paging · MMU · Address space abstractions · Memory allocation heuristics · Clock eviction algorithm · System calls · Kernel/user address space</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">C++ (v20)</p>
+                    </div>
+                </div>
+                <!-- Pane #3 -->
+                <div class="pane" data-topic="OS">
+                    <div class="indicator-box indicator-os">Operating Systems</div>
+                    <div class="pane-image">
+                        <img src="./Images/thread2.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">Unix Thread Library</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">October 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">Implemented a thread library which supports single and multicore x86 Unix machines in C++20. The
+                                        thread library mimics the functionality of operating system threads and features thread management
+                                        methods, synchronization primitives, and hardware timer / IPI interrupt handling. 
+                          
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">CNN forwarding · Constant memory · GEMM convolution · Thread coarsening · GPU memory model & locality · Reuse analysis · Nsight Compute profiling</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">C++ (v20)</p>
+                    </div>
+                </div>
+                <!-- Pane #4 -->
+                <div class="pane" data-topic="OS">
+                    <div class="indicator-box indicator-os">Operating Systems</div>
+                    <div class="pane-image">
+                        <img src="./Images/disk5.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">Disk I/O Scheduler</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">September 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">In this mini project, I developed several NVIDIA GPU kernels for the purpose of histogram equalization 
+                                        to improve the contrast of arbitrary PPM images. The kernels leveraged as many common optimizations as possible 
+                                        and employed GPU atomic operations for committing bin data as well as utilizing the Brent-Kung parallel prefix 
+                                        scan algorithm for efficient CDF computation. 
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">Histogram computation · Shared memory · Reductions · Parallel scan algorithms · GPU memory model & locality · CUDA atomics · Nsight Compute profiling</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">C++ (v20)</p>
+                    </div>
+                </div>
+                <!-- GPU Programming Panes (EECS 471) -->
+                <!-- Pane #1 -->
+                <div class="pane" data-topic="GPU">
+                    <div class="indicator-box indicator-gpu">GPU Programming</div>
+                    <div class="pane-image">
+                        <img src="./Images/cnn1.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">CNN Forwarding Optimization Kernel</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">December 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">In this project, I created a NVIDIA GPU kernel for accelerating the 2 forwarding passes of a pretrained CNN
+                                        for the MNIST-Fashion dataset. By utilizing constant memory for the 2D and 3D convolutional filters on both
+                                        passes and parallelizing 4 out of 6 loops in the serial algorithm, I achieved a combined time of 0.168s for 
+                                        computing both passes compared to the original 13.6s (~81x speedup).
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">CNN forwarding · Constant memory · GEMM convolution · Thread coarsening · GPU memory model & locality · Reuse analysis · Nsight Compute profiling</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">CUDA</p>
+                    </div>
+                </div>
+                <!-- Pane #2 -->
+                <div class="pane" data-topic="GPU">
+                    <div class="indicator-box indicator-gpu">GPU Programming</div>
+                    <div class="pane-image">
+                        <img src="./Images/histo4.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">Histogram Equalization Kernels</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">September 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">In this mini project, I developed several NVIDIA GPU kernels for the purpose of histogram equalization 
+                                        to improve the contrast of arbitrary PPM images. The kernels leveraged as many common optimizations as possible 
+                                        and employed GPU atomic operations for committing bin data as well as utilizing the Brent-Kung parallel prefix 
+                                        scan algorithm for efficient CDF computation. 
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">Histogram computation · Shared memory · Reductions · Parallel scan algorithms · GPU memory model & locality · CUDA atomics · Nsight Compute profiling</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">CUDA</p>
+                    </div>
+                </div>
+                <!-- Pane #3 -->
+                <div class="pane" data-topic="GPU">
+                    <div class="indicator-box indicator-gpu">GPU Programming</div>
+                    <div class="pane-image">
+                        <img src="./Images/3dconv2.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">3D Convolution Kernel</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">October 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">In this mini project, I devloped a NVIDIA GPU kernel for accelerating 3D convolution computation
+                                        in image and video processing workflows. The kernel was optimized for maximum speed using GPU-specific
+                                        techniques such as constant memory, shared memory, tiling, and memory coalescing. The performance of this
+                                        optimized GPU solution was compared with a serial implementation, showcasing a ~38x speedup.
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">DRAM bursting · Shared memory · Constant memory · Tiling strategies · GPU memory model & locality · Reuse analysis · Nsight Compute profiling</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">CUDA</p>
+                    </div>
+                </div>
+                <!-- Pane #4 -->
+                <div class="pane" data-topic="GPU">
+                    <div class="indicator-box indicator-gpu">GPU Programming</div>
+                    <div class="pane-image">
+                        <img src="./Images/matrix2.png" alt="DSA Project">
+                    </div>
+                    <div class="pane-content">
+                        <div class="lock-icon">
+                            <i class="fa fa-lock"></i>
+                            <div class="tooltip">This is an academic project subject to University of Michigan publication guidelines. Contact me directly for access to the source code by email at davidmek@umich.edu.</div>
+                        </div>
+                        <h2 class="pane-c-title">Tiled Matrix Multiplication Kernel</h2>
+                        <h3 class="pane-c-date-text">Date</h3>
+                        <p class="pane-date">September 2023</p>
+                        <h3 class="desc-text">Description</h3>
+                        <p class="desc">In this mini project, an NVIDIA GPU kernel was developed for tiled matrix multiplication, 
+                                        optimized for maximum speed using GPU-specific techniques such as thread coarsening, memory coalescing, 
+                                        and utilizing shared memory wherever possible. The performance of this optimized 
+                                        GPU solution was compared with a serial implementation, showcasing a ~43x speedup.
+                        </p>
+                        <h3 class="concepts-text">Concepts</h3>
+                        <p class="pane-concept-text">DRAM bursting · Shared memory · Constant memory · Tiling strategies · GPU memory model & locality · Reuse analysis · Nsight Compute profiling</p>
+                        <h3 class="languages-text">Language(s)</h3>
+                        <p class="pane-c-languages">CUDA</p>
+                    </div>
+                </div>
+                <!-- Analog Devices Internship Project -->
+                <!-- Pane #1 -->
+
                 <!-- Intro Computer Architecture Panes (EECS 370) -->
                 <!-- Pane #1 -->
                 <div class="pane" data-topic="CA">
+                    <div class="indicator-box indicator-ca">Intro Computer Architecture</div>
                     <div class="pane-image">
                         <img src="./Images/cachesim.png" alt="DSA Project">
                     </div>
@@ -461,13 +676,14 @@
                                         policy and an allocate-on-write and write-back data policy.
                         </p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">Write-through/Write-back Caching · Eviction Policies · Cache Associativity · Cache Configuration · Cache Misses</p>
+                        <p class="pane-concept-text">Write-through/Write-back caching · Eviction policies · Cache associativity · Cache configuration · Cache misses</p>
                         <h3 class="languages-text">Language(s)</h3>
                         <p class="pane-c-languages">C</p>
                     </div>
                 </div>
                 <!-- Pane #2 -->
                 <div class="pane" data-topic="CA">
+                    <div class="indicator-box indicator-ca">Intro Computer Architecture</div>
                     <div class="pane-image">
                         <img src="./Images/pipelinedcpu.png" alt="DSA Project">
                     </div>
@@ -486,13 +702,14 @@
                                         control hazards and data hazards.
                         </p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">Pipeline Staging · Register Forwarding · Data Hazards · Control Hazards · Hazard Resolution Techniques · Performance Considerations</p>
+                        <p class="pane-concept-text">Pipeline staging · Register forwarding · Data hazards · Control hazards · Hazard resolution techniques · Performance considerations</p>
                         <h3 class="languages-text">Language(s)</h3>
                         <p class="pane-c-languages">C</p>
                     </div>
                 </div>
                 <!-- Pane #3 -->
                 <div class="pane" data-topic="CA">
+                    <div class="indicator-box indicator-ca">Intro Computer Architecture</div>
                     <div class="pane-image">
                         <img src="./Images/assembler1.png" alt="DSA Project">
                     </div>
@@ -518,6 +735,7 @@
                 </div>
                 <!-- Pane #4 -->
                 <div class="pane" data-topic="CA">
+                    <div class="indicator-box indicator-ca">Intro Computer Architecture</div>
                     <div class="pane-image">
                         <img src="./Images/lc2k1.png" alt="DSA Project">
                     </div>
@@ -544,6 +762,7 @@
                 <!-- Data Structures & Algorithms Panes (EECS 281)-->
                 <!-- Pane #1 -->
                 <div class="pane" data-topic="DSA">
+                    <div class="indicator-box indicator-dsa">DSA</div>
                     <div class="pane-image">
                         <img src="./Images/graphs3.png" alt="DSA Project">
                     </div>
@@ -565,6 +784,7 @@
                 </div>
                 <!-- Pane #2 -->
                 <div class="pane" data-topic="DSA">
+                    <div class="indicator-box indicator-dsa">DSA</div>
                     <div class="pane-image">
                         <img src="./Images/database2.jpg" alt="DSA Project">
                     </div>
@@ -586,6 +806,7 @@
                 </div>
                 <!-- Pane #3 -->
                 <div class="pane" data-topic="DSA">
+                    <div class="indicator-box indicator-dsa">DSA</div>
                     <div class="pane-image">
                         <img src="./Images/zombies.jpg" alt="DSA Project">
                     </div>
@@ -607,6 +828,7 @@
                 </div>
                 <!-- Pane #4 -->
                 <div class="pane" data-topic="DSA">
+                    <div class="indicator-box indicator-dsa">DSA</div>
                     <div class="pane-image">
                         <img src="./Images/countess.jpg" alt="DSA Project">
                     </div>
@@ -632,6 +854,10 @@
             </div>
         </div>
         <div class="carousel-indicator">
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
             <span class="carousel-dot"></span>
             <span class="carousel-dot"></span>
             <span class="carousel-dot"></span>

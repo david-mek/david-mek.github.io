@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Define number of dots.
   const numDots = numPanePairs;
   // Pane fade duration (in milliseconds).
-  const fadeDuration = 500; 
+  const fadeDuration = 750; 
 
 
   // Function to toggle visibility and fading
