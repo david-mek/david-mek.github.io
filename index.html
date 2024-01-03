@@ -30,12 +30,12 @@
             <video playsinline autoplay muted loop src="./Video Backgrounds/pexels_yellow_paint.mp4" type="video/mp4"></video>
             <div class="nav-links" id="navlinks">
                 <ul>
-                    <li><a href="#">0.ABOUT</a></li>
-                    <li><a href="#">1.SKILLS</a></li>
-                    <li><a href="#">2.PROJECTS</a></li>
+                    <li><a href="#about">0.ABOUT</a></li>
+                    <li><a href="#skills">1.SKILLS</a></li>
+                    <li><a href="#projects">2.PROJECTS</a></li>
                     <!-- Redirect to Google Drive link w/ most recent Resume -->
                     <li><a href="https://drive.google.com/file/d/1xfmZfDZhAayZ7qsk-4GBljxLwkwZQxFL/view?usp=drive_link" target="blank"> 3.RESUME</a></li>
-                    <li><a href="#">4.CONTACT</a></li>
+                    <li><a href="#contact">4.CONTACT</a></li>
                 </ul>
             </div>
         </nav>
@@ -45,12 +45,12 @@
             </div>
             <div class="text_box">
                 <p>Computer Science & Engineering undergraduate at the University of Michigan.</p>
-                <a href="" class="learn-more-btn">Enter my Portfolio</a>
+                <a href="#about" class="learn-more-btn">Enter my Portfolio</a>
             </div>
         </div>
     </section>
     <!-- Section 2 - About Me -->
-    <section class="tile_two fade-in">
+    <section class="tile_two fade-in" id="about">
         <div class="pic_and_description">
             <div class="selfie_picture">
                 <img class="tile_two_photo" src="./Images/selfie.jpg" alt="Selfie Image.">
@@ -73,15 +73,15 @@
                                                I also possess a strong mathematical background with experience in calculus, linear algebra, 
                                                and discrete mathematics. Check out my full projects, experiences, and skills below.</p>
                 <div class="btn_row">
-                    <a href="javascript:void(0);" class="view_skills_btn" onclick="recessButton(this)">View Skills</a>
-                    <a href="javascript:void(0);" class="view_projects_btn" onclick="recessButton(this)">View Projects</a>
+                    <a href="#skills" class="view_skills_btn" onclick="recessButton(this)">View Skills</a>
+                    <a href="#projects" class="view_projects_btn" onclick="recessButton(this)">View Projects</a>
                     <a href="https://drive.google.com/file/d/1xfmZfDZhAayZ7qsk-4GBljxLwkwZQxFL/view?usp=drive_link" target="blank" class="view_resume_btn" onclick="recessButton(this)">Resumé</a>
                 </div>
             </div>
         </div>
     </section>
     <!-- Section 3 - Skills -->
-    <section class="tile_three">
+    <section class="tile_three" id="skills">
         <div class="content_wrapper">
             <div class="title">
             <h1 class="title_text">My Skills</h1>
@@ -260,7 +260,7 @@
         </div>
     </section>
     <!-- Section 4 - Timeline -->
-    <section class="timeline-section">
+    <section class="timeline-section" id="timeline">
         <div class="timeline-container">
             <h1 class="timeline_title">Timeline</h1>
             <h2 class="timeline_subtitle">A short summary of my educational and work experiences. Click events to see details.</h2>
@@ -415,7 +415,7 @@
         </div>
       </section>
     <!-- Section 5 - Projects -->
-    <section class="projects-section">
+    <section class="projects-section" id="projects">
         <h1 class="project-title">My Projects</h1>
         <div class="subtitle-container">
             <h2 class="project-subtitle">Filter displayed projects using the buttons below.</h2>
@@ -429,10 +429,10 @@
             <button data-filter="Computer Architecture" class="filter-button selected"><span class="icon">✓</span>Computer Architecture</button>
             <button data-filter="Operating Systems" class="filter-button selected"><span class="icon">✓</span>Operating Systems</button>
             <button data-filter="GPU Programming" class="filter-button selected"><span class="icon">✓</span>GPU Programming</button>
-            <button data-filter="Compilers" class="filter-button selected"><span class="icon">✓</span>Compilers</button>
-            <button data-filter="Web Development" class="filter-button selected"><span class="icon">✓</span>Web Dev</button>
-            <button data-filter="Industry Projects" class="filter-button selected"><span class="icon">✓</span>Industry Projects</button>
-            <button data-filter="Capstone Projects" class="filter-button selected"><span class="icon">✓</span>Capstone Projects</button>
+            <button data-filter="Compilers" class="filter-button"><span class="icon">✗</span>Compilers</button>
+            <button data-filter="Web Development" class="filter-button"><span class="icon">✗</span>Web Dev</button>
+            <button data-filter="Industry Projects" class="filter-button"><span class="icon">✗</span>Industry Projects</button>
+            <button data-filter="Capstone Projects" class="filter-button"><span class="icon">✗</span>Capstone Projects</button>
             <!-- Add more buttons as needed -->
         </div>
         <div class="carousel">
@@ -456,13 +456,13 @@
                         <h3 class="pane-c-date-text">Date</h3>
                         <p class="pane-date">December 2023</p>
                         <h3 class="desc-text">Description</h3>
-                        <p class="desc">Implemented an ACID compliant network file server using C++20 and Boost libraries for regex, thread,
+                        <p class="desc">In this project, I implemented an ACID compliant network file server using C++20 and Boost libraries for regex, thread,
                                         and reader-writer lock functionality. The file server can be run on any x86 Unix machine, utilizes BSD
                                         sockets for interprocess network communication, and has several design considerations for fault tolerance.
                           
                         </p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">Boost threads · Fine-grained locking · Reader-writer locks · Boost regex · Remote procedure calls · BSD socket programming · Crash consistency methods</p>
+                        <p class="pane-concept-text">Boost threads · Fine-grained locking · Reader-writer locks · Boost regex · RAII · Remote procedure calls · BSD socket programming · Crash consistency methods</p>
                         <h3 class="languages-text">Language(s)</h3>
                         <p class="pane-c-languages">C++ (v20)</p>
                     </div>
@@ -482,10 +482,10 @@
                         <h3 class="pane-c-date-text">Date</h3>
                         <p class="pane-date">November 2023</p>
                         <h3 class="desc-text">Description</h3>
-                        <p class="desc">Implemented a simulator of the pager portion of a Unix operating system kernel used to manage application
+                        <p class="desc">In this project, I implemented a simulator of the pager portion of a Unix operating system kernel used to manage application
                                       processes' virtual address space. The pager implemented system calls like the UNIX fork() which are used
                                       to create, copy, destroy address spaces, allocate more space in existing ones, and switch between address
-                                      spaces. The pager features a simulated MMU and an interrupt handler vector table for memory faults.
+                                      spaces. The pager features a simulated MMU and an interrupt handler for memory faults.
                           
                         </p>
                         <h3 class="concepts-text">Concepts</h3>
@@ -509,13 +509,13 @@
                         <h3 class="pane-c-date-text">Date</h3>
                         <p class="pane-date">October 2023</p>
                         <h3 class="desc-text">Description</h3>
-                        <p class="desc">Implemented a thread library which supports single and multicore x86 Unix machines in C++20. The
+                        <p class="desc">In this project, I implemented a thread library which supports single and multicore x86 Unix machines in C++20. The
                                         thread library mimics the functionality of operating system threads and features thread management
                                         methods, synchronization primitives, and hardware timer / IPI interrupt handling. 
                           
                         </p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">CNN forwarding · Constant memory · GEMM convolution · Thread coarsening · GPU memory model & locality · Reuse analysis · Nsight Compute profiling</p>
+                        <p class="pane-concept-text">RAII · STL smart pointers · Hardware atomicity · Interrupt handling · Unix user contexts · Spin lock · Synchronization primitive implementation</p>
                         <h3 class="languages-text">Language(s)</h3>
                         <p class="pane-c-languages">C++ (v20)</p>
                     </div>
@@ -524,7 +524,7 @@
                 <div class="pane" data-topic="OS">
                     <div class="indicator-box indicator-os">Operating Systems</div>
                     <div class="pane-image">
-                        <img src="./Images/disk5.png" alt="DSA Project">
+                        <img src="./Images/disk6.png" alt="DSA Project">
                     </div>
                     <div class="pane-content">
                         <div class="lock-icon">
@@ -535,13 +535,12 @@
                         <h3 class="pane-c-date-text">Date</h3>
                         <p class="pane-date">September 2023</p>
                         <h3 class="desc-text">Description</h3>
-                        <p class="desc">In this mini project, I developed several NVIDIA GPU kernels for the purpose of histogram equalization 
-                                        to improve the contrast of arbitrary PPM images. The kernels leveraged as many common optimizations as possible 
-                                        and employed GPU atomic operations for committing bin data as well as utilizing the Brent-Kung parallel prefix 
-                                        scan algorithm for efficient CDF computation. 
+                        <p class="desc">In this project, I implemented a disk I/O scheduler for a simulated Unix operating system kernel. The scheduler
+                                        is responsible for ordering disk requests from multiple processes to minimize seek time and maximize
+                                        throughput. The scheduler features a simulated disk and utilizes the SSTF algorithm for scheduling.
                         </p>
                         <h3 class="concepts-text">Concepts</h3>
-                        <p class="pane-concept-text">Histogram computation · Shared memory · Reductions · Parallel scan algorithms · GPU memory model & locality · CUDA atomics · Nsight Compute profiling</p>
+                        <p class="pane-concept-text">Disk scheduling algorithms · Multithreaded programming · MESA monitors · Semaphores · Disk I/O performance considerations</p>
                         <h3 class="languages-text">Language(s)</h3>
                         <p class="pane-c-languages">C++ (v20)</p>
                     </div>
@@ -711,7 +710,7 @@
                 <div class="pane" data-topic="CA">
                     <div class="indicator-box indicator-ca">Intro Computer Architecture</div>
                     <div class="pane-image">
-                        <img src="./Images/assembler1.png" alt="DSA Project">
+                        <img src="./Images/assembler2.png" alt="DSA Project">
                     </div>
                     <div class="pane-content">
                         <div class="lock-icon">
@@ -865,6 +864,12 @@
             <!-- <span class="carousel-dot"></span>
             <span class="carousel-dot"></span> -->
         </div>
+    </section>
+    <!-- Section 6 - Contact -->
+    <section class="contact-section" id="contact">
+        <h1 class="contact-title">Get in touch</h1>
+        <p class="contact-description">Questions, comments, code requests, bug reports, and prospective employers are all welcome in my inbox :)</p>
+        <a href="mailto:davidmek@umich.edu" class="email_me_btn" onclick="recessButton(this)">Email Me</a>
     </section>
     <!-- Javascript Source Document(s) -->
     <script src="./main.js"></script>

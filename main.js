@@ -414,3 +414,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// // Section 6 (Contact Section) Javascript
+// document.addEventListener('DOMContentLoaded', () => {
+//   const contactSectionContent = document.querySelector('.contact-section-content');
+
+//   const observer = new IntersectionObserver(entries => {
+//       entries.forEach(entry => {
+//           if (entry.isIntersecting) {
+//               entry.target.classList.add('fade-in');
+//           }
+//       });
+//   }, { threshold: 0.1 }); // Adjust the threshold value as needed
+
+//   observer.observe(contactSectionContent);
+// });
+
+// Extra JS for smooth scrolling w/ buttons
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+          });
+      });
+  });
+});
