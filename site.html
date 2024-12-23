@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="icon" href="favicon.svg"> -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- google fonts -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <title>David Mekhtiev</title>
+</head>
+<body>
+    <div class="centered-wrapper">
+        <div class="name">
+            <h1 style="font-size: 2.5rem;">David Mekhtiev</h1>
+            <p>Last updated: Dec. 2024 • <span id="current-date"></span></p>
+            <p>Jump to 
+                <a href="#experience">[experience]</a>
+                <a href="#projects">[projects]</a>
+            </p>
+        </div>
+        <div style="height: 1rem;"></div>
+        <section class="about">
+            <h2>1. About me</h2>
+            <p>I am a computer science and engineering undergraduate at the University of Michigan 
+                about to complete my bachelor's degree in May 2025. I am interested in computer science theory, 
+                low-level software, and computer architecture. I am focused on developing skills in the 
+                intersection of those areas, particularly high-performance computing and system architecture.</p>
+            <h3>Email</h3>
+            <p>davidmek@umich.edu <a href="mailto:davidmek@umich.edu">[mailto]</a></p>
+            <h3>Photo</h3>
+            <img class="my-photo" src="./imgs/me.jpg" alt="me" style="width: 200px; height: auto;">
+            <h3>Links</h3>
+            <ul>
+                <li>Resume <a href="">[link]</a></li>
+                <li>GitHub <a href="https://github.com/david-mek">[link]</a></li>
+                <li>LinkedIn <a href="https://www.linkedin.com/in/david-mek/">[link]</a></li>
+            </ul>
+        </section>
+        <div style="height: 1rem;"></div>
+        <section id="experience">
+            <h2>2. Experience</h2>
+            <p>Below you will find various academic and industry experiences I had in descending order from most recent to oldest.</p>
+            <ul>
+                <li>
+                    <h3>Teaching Assistant</h3>
+                    <h4 class="exp-title">EECS 483 (Compiler Construction) 
+                        <a href="https://maxsnew.com/teaching/eecs-483-wn24/index.html" style="font-style: normal;">[course site]</a>
+                        <a href="https://maxsnew.com/" style="font-style: normal;">[prof site]</a>
+                    </h4>
+                    <h4 class="exp-date">Presently involved.</h4>
+                    <p class="description hidden">Working with Professor Max New to provide office hours, responses to student questions on Piazza, 
+                       leading a discussion section, and general support for course logistics during the Winter 2025 semester.</p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+                <li>
+                    <h3>Analog Devices</h3>
+                    <h4 class="exp-title">Hardware & Systems Engineering Intern</h4>
+                    <h4 class="exp-date">May - Aug. 2024</h4>
+                    <p class="description hidden">During this internship, I was tasked with automating an existing workflow for a Neural Processing Unit's SDK for
+                       PPA (power, performance, and area) analysis. This involved modifying memory map tables, generating linker scripts, 
+                       compiling TensorFlow Lite neural networks into binary executables for the hardware, running SystemC simulations, 
+                       scraping simulation logs for performance data, generating/simulating parameterizable RTL, and performing power 
+                       usage analysis. There was a large amount of work done with Cadence tools as well as Cadence DSPs. I also did
+                       profiling and optimizations on an existing <span style="font-family: 'Courier New', monospace;">CUDA</span> and 
+                       <span style="font-family: 'Courier New', monospace;">C++</span> codebase for 5G signal processing. This involved 
+                       downconversion, OFDM via FFTs, channel estimation, demodulation, and EVM calculations on Nvidia GPUs. 
+                       The GPU kernels were profiled with a mixture of Nsight Systems, Nsight Compute, roofline analysis, and 
+                       <span style="font-family: 'Courier New', monospace;">Python</span> scripting. 
+                       Both tasks were fairly high in visibility and led to significantly improved workflows / data harvesting.</p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+                <li>
+                    <h3>Analog Devices</h3>
+                    <h4 class="exp-title">System Software Engineering Intern</h4>
+                    <h4 class="exp-date">May - Aug. 2023</h4>
+                    <p class="description hidden">During this internship, I worked on the product security team and developed a 
+                        <a href="https://en.wikipedia.org/wiki/SystemC">SystemC</a> model of an elliptic curve 
+                       cryptographic block in an embedded security enclave to aid in its functional verification and NIST certification.
+                       Super scary secret stuff.
+                    </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+            </ul>
+        </section>
+        <div style="height: 1rem;"></div>
+        <section id="projects">
+            <h2>3. Projects</h2>
+            <p>
+                Below you will find various notable technical projects I have worked on as part of my studies and free-time tinkering.
+                I am slowly filling out the descriptions for some.
+            </p>
+            <ul>
+                <li>
+                    <h3>Sharded Paxos based key/value service</h3>
+                    <h4 class="proj-title">
+                        Academic project
+                    </h4>
+                    <h4 class="proj-date">Dec. 2024</h4>
+                    <p class="description hidden">
+                        I implemented a distributed sharded key/value storage system with fault tolerance and consistency using Paxos. 
+                        The system partitions keys across multiple replica groups, each responsible for a subset of shards, with a central 
+                        "shard master" managing shard assignments and reconfigurations. I developed the shard master to handle configuration 
+                        changes using <span style="font-family: 'Courier New', monospace;">Join()</span>, 
+                        <span style="font-family: 'Courier New', monospace;">Leave()</span>, 
+                        <span style="font-family: 'Courier New', monospace;">Move()</span>, and
+                        <span style="font-family: 'Courier New', monospace;">Query()</span> RPCs exposed to the client, 
+                        ensuring even shard redistribution while maintaining fault tolerance. Later on, I built the sharded key/value 
+                        servers to handle client requests with single-copy semantics, designing a robust protocol for shard transfers during 
+                        configuration changes. This system successfully manages dynamic reconfigurations and ensures 
+                        consistency across all replica groups.
+                    </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+                <li>
+                    <h3>Multiprocessor cache coherence protocol</h3>
+                    <h4 class="proj-title">
+                        Academic project
+                    </h4>
+                    <h4 class="proj-date">Nov. 2024</h4>
+                    <p class="description hidden">
+                        I designed and formally verified a directory based cache coherence protocol for a 4 core processor. 
+                        The protocol was a modification of the canonical <a href="https://en.wikipedia.org/wiki/MSI_protocol">MSI scheme</a> 
+                        found in many computer architecture courses. Modifications
+                        mainly included additional handshakes and transient states to deal with the fact that messages could be arbitrarily 
+                        reordered by the interconnect network. Formal verification was done by encoding the replicated state machine of 
+                        the processor and directory cache controllers in the <a href="https://en.wikipedia.org/wiki/Murφ" style="font-style: bold;">Murphi language</a> 
+                        and exploring the ~700,000 possible state space for inavariant violations and deadlocks.
+                    </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+                <li>
+                    <h3>Paxos based key/value service</h3>
+                    <h4 class="proj-title">Academic project</h4>
+                    <h4 class="proj-date">Nov. 2024</h4>
+                    <p class="description hidden">
+                        In this project, I implemented a Paxos-based key/value storage system that ensures high reliability and fault 
+                        tolerance. The system replaces a single master view server with Paxos to manage consensus, enabling all replicas 
+                        to process client requests in a consistent order without relying on a single point of failure. My work involved 
+                        designing and implementing a Paxos library that supports concurrent agreement across multiple instances, 
+                        managing memory efficiently for forgotten instances, and maintaining linearizable semantics for the key/value 
+                        service. The project also required careful handling of duplicate requests and ensuring the system could 
+                        recover state when replicas lagged behind. By layering the Paxos library, a replicated state machine, 
+                        and the key/value server, I structured the implementation to separate concerns and simplify complexity.
+                    </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+                <li>    
+                    <h3>Computer security exploits</h3>
+                    <h4 class="proj-title">Several academic projects</h4>
+                    <h4 class="proj-date">Jan. 2024</h4>
+                    <p class="description hidden">
+                        <span style="font-weight: 800;">Disclaimer:</span> All computer security projects listed on this page and subsequent exploits were sanctioned
+                        by the University of Michigan. Any infrastructure mentioned as targets of exploits or breaches are owned
+                        and operated by the university for educational purposes.<br><br>
+
+                        1) In the first project, I implemented several exploits against known vulnerabilities in cryptosystems
+                        like MD5, SHA-1, SHA-2, and other hashes using 
+                        <a href="https://en.wikipedia.org/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction">Merkle-Damgård construction</a>. 
+                        First, I wrote scripts which perform a length extension attack and hash collision attack. I also 
+                        created scripts that performed padding oracle attacks on a vulnerable endpoint that contained 
+                        encrypted communications and made the mistake of 
+                        <a href="https://moxie.org/2011/12/13/the-cryptographic-doom-principle.html">doing decryption before message authentication</a>
+                        in its backend.<br><br>
+
+                        2) In the second project, I executed several website security exploits such as SQL injection, Cross-site scripting (XSS), 
+                        and Cross-site request forgery (CSRF) against various tiers of defenses.<br><br>
+
+                        3) In the third project, I retraced the steps an attacker took to breach a fictional company's wesbite and database. I had
+                        to employ tools like Wireshark, Python scripting, and networking code to find security vulnerabilities in the company's 
+                        mobile device management (MDM) infrastructure, particularly in their DNS resolver and their multi-factor authentication tool.
+                        <br><br>
+
+                        4) In the fourth project, I performed several exploits against application security vulnerabilities, focusing on buffer 
+                        overflows and control-flow hijacking. First, I developed input that triggered stack variable overwrites in a controlled 
+                        environment, demonstrating the risks of improper memory management. Then, I crafted payloads to overwrite return addresses, 
+                        redirecting program execution to arbitrary code. Using tools like GDB and <span style="font-family: 'Courier New', monospace;">x86-64</span> 
+                        assembly, I created exploits that bypassed 
+                        security defenses like DEP (Data Execution Prevention) and ASLR (Address Space Layout Randomization). Finally, I applied 
+                        reverse engineering techniques with Ghidra to analyze a closed-source binary, identifying and exploiting vulnerabilities 
+                        to achieve the desired control. These tasks enhanced my understanding of machine architecture, assembly language, and 
+                        the importance of secure coding practices.<br><br>
+
+                        5) In the final project, I was tasked with performing a forensic analysis on a fictional cyber criminal named Leslie. I
+                        was provided with a forensic copy of his hard drive and well as his physical machine. In order to find incriminating evidence,
+                        I had to utilize a lot of the techniques from previous projects, including new ones like using stegonography, 
+                        password crackers, binwalk, spectrograms, and the Autopsy digitial forensics software.
+                    </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+                <li>
+                    <h3>Parameterizable superscalar out-of-order processor</h3>
+                    <h4 class="proj-title">
+                        Academic project
+                        <a href="https://drive.google.com/file/d/1RfwSQpUkooiU_X98c6q6y6mwchEE7vRl/view?usp=drive_link" style="font-style: normal;">[final report]</a>
+                    </h4>
+                    <h4 class="proj-date">Feb - Mar. 2024</h4>
+                    <p class="description hidden">
+                        For this project, my team and I designed and implemented a 32-bit RISCV superscalar out-of-order processor in behavioral SystemVerilog.
+                        Simulation and synthesis were performed via Synopsys VCS. Our design was inspired by the <a href="https://en.wikipedia.org/wiki/R10000">MIPS R10000</a> 
+                        implementation of <a href="https://en.wikipedia.org/wiki/Tomasulo's_algorithm">Tomasulo's algorithm</a> and 
+                        included core components like a reservation station (RS), reorder buffer (ROB), physical register file (PRF), and a retirement 
+                        register allocation table (RRAT). We chose a 3-way superscalar configuration to balance complexity and performance, incorporating 
+                        advanced features such as early tag broadcasting (ETB), a non-speculative load-store queue with internal data forwarding from in flight stores to dependant loads, 
+                        and a non-blocking L1 data cache with prefetching. ETB enabled dependent instructions to execute back-to-back with minimal delays, while the load-store queue 
+                        effectively reduced memory access contention. The load-store queue maintained dependency tracking with bit masks. Each load in the RS maintained a bit mask that 
+                        indicated which stores in the Store Queue (SQ) were older and a second bit mask was used to track which older stores had unresolved addresses. This design was
+                        inspired by similar mechanisms in the <a href="https://docs.boom-core.org/en/latest/sections/intro-overview/boom.html">Berkeley Out-of-Order Machine</a>.
+                        Our instruction cache (I$) and data cache (D$) were designed with prefetching and non-blocking mechanisms, enhancing data throughput. 
+                        Memory handling was enhanced by implementing miss status handling registers (MSHRs) to 
+                        reduce stalls caused by cache misses. Performance analysis revealed improvements in cycles per instruction (CPI) compared to 
+                        baseline in-order designs, particularly on benchmarks leveraging instruction-level parallelism (ILP). However, challenges 
+                        like cache aliasing and limited branch prediction accuracy highlighted areas for future improvement. Additionally, a 
+                        React-based GUI debugger was developed to visualize all processor signals at every cycle of a program's execution to aid debugging.
+                        We were able to meet slack with a 13.7ns clock period (~73Mhz frequency).
+                    </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+                <li>
+                    <h3>
+                        <span style="font-family: 'Courier New', monospace;">C</span>
+                        to
+                        <span style="font-family: 'Courier New', monospace;">x86-64</span>
+                        optimizing compiler
+                    </h3>
+                    <h4 class="proj-title">Several academic projects</h4>
+                    <h4 class="proj-date">Jan - Mar. 2024</h4>
+                    <p>
+                        
+                    </p>
+                </li>
+                <li>
+                    <h3>Multithreaded network file server</h3>
+                    <h4 class="proj-title">Academic project</h4>
+                    <h4 class="proj-date">Nov - Dec. 2023</h4>
+                    <p>
+                        
+                    </p>
+                </li>
+                <li>
+                    <h3>
+                        MNIST-Fashion CNN optimized w/ 
+                        <span style="font-family: 'Courier New', monospace;">CUDA</span>
+                    </h3>
+                    <h4 class="proj-title">Academic project</h4>
+                    <h4 class="proj-date">Nov. 2023</h4>
+                    <p>
+                        
+                    </p>
+                </li>
+                <li>
+                    <h3>Unix virtual memory pager</h3>
+                    <h4 class="proj-title">Academic project</h4>
+                    <h4 class="proj-date">Sept - Oct. 2023</h4>
+                    <p class="description hidden">
+                        Implemented a simulator of the pager portion of a Unix operating system kernel used to manage application
+                        processes' virtual address space. The pager was written in <span style="font-family: 'Courier New', monospace;">C++20</span> and 
+                        implemented system calls like the Unix <span style="font-family: 'Courier New', monospace;">fork()</span> which are used
+                        to create, copy, destroy address spaces, allocate more space in existing ones, and switch between address
+                        spaces. The pager features a simulated MMU and an interrupt handler for memory faults.
+                    </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
+                </li>
+                <li>
+                    <h3>Unix thread library</h3>
+                    <h4 class="proj-title">Academic project</h4>
+                    <h4 class="proj-date">Sept. 2023</h4>
+                    <p>
+                        
+                    </p>
+                </li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
+
+<script src="script.js"></script>

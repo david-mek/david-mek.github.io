@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Inria Sans';
+    color: rgb(33, 33, 33);
+    background-color: rgb(255, 255, 255);
+}
+  
+.centered-wrapper {
+  width: 50vw;
+  padding-top: 10vh;
+  padding-left: 25vw;
+  text-align: left;
+}
+
+div h1, h2, h3, h4 {
+  margin-bottom: 0.5rem;
+}
+
+.exp-title, .proj-title {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.exp-date, .proj-date {
+  margin-top: 0rem;
+  font-weight: 400;
+}
+
+div p {
+  margin-top: 0;
+}
+
+button {
+  margin-top: 0;
+  border-color: rgb(33, 33, 33);
+  background-color: rgb(255, 225, 0);
+  border-radius: 0.25rem;
+  border-width: 0.1rem;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.hidden {
+  display: none;
+}
+
+a:link {
+  color: rgb(255, 225, 0);
+}
+
+a:visited {
+  color: rgb(255, 225, 0);
+}
+
+a:hover {
+  color: rgb(0, 85, 255);
+}
