@@ -11,6 +11,7 @@ body {
 .centered-wrapper {
   padding-top: 10vh;
   padding-left: 5vw;
+  padding-right: 5vw;
   text-align: left;
 }
 
@@ -19,6 +20,7 @@ body {
   .centered-wrapper {
     width: 50vw;
     padding-left: 25vw;
+    padding-right: none;
   }
 }
 
