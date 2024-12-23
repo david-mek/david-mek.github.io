@@ -9,10 +9,17 @@ body {
 }
   
 .centered-wrapper {
-  width: 50vw;
   padding-top: 10vh;
-  padding-left: 25vw;
+  padding-left: 5vw;
   text-align: left;
+}
+
+/* Additions for non-mobile */
+@media (min-width: 768px) {
+  .centered-wrapper {
+    width: 50vw;
+    padding-left: 25vw;
+  }
 }
 
 div h1, h2, h3, h4 {
