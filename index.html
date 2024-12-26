@@ -205,13 +205,15 @@
                         Simulation and synthesis were performed via Synopsys VCS. Our design was inspired by the <a href="https://en.wikipedia.org/wiki/R10000">MIPS R10000</a> 
                         implementation of <a href="https://en.wikipedia.org/wiki/Tomasulo's_algorithm">Tomasulo's algorithm</a> and 
                         included core components like a reservation station (RS), reorder buffer (ROB), physical register file (PRF), and a retirement 
-                        register allocation table (RRAT). We chose a 3-way superscalar configuration to balance complexity and performance, incorporating 
+                        register allocation table (RRAT). <br><br>
+                        We chose a 3-way superscalar configuration to balance complexity and performance, incorporating 
                         advanced features such as early tag broadcasting (ETB), a non-speculative load-store queue with internal data forwarding from in flight stores to dependant loads, 
                         and a non-blocking L1 data cache with prefetching. ETB enabled dependent instructions to execute back-to-back with minimal delays, while the load-store queue 
-                        effectively reduced memory access contention. The load-store queue maintained dependency tracking with bit masks. Each load in the RS maintained a bit mask that 
+                        effectively reduced memory access contention. The load-store queue handled dependency tracking with bit masks. Each load in the RS maintained a bit mask that 
                         indicated which stores in the Store Queue (SQ) were older and a second bit mask was used to track which older stores had unresolved addresses. This design was
-                        inspired by similar mechanisms in the <a href="https://docs.boom-core.org/en/latest/sections/intro-overview/boom.html">Berkeley Out-of-Order Machine</a>.
-                        Our instruction cache (I$) and data cache (D$) were designed with prefetching and non-blocking mechanisms, enhancing data throughput. 
+                        inspired by similar mechanisms in the <a href="https://docs.boom-core.org/en/latest/sections/intro-overview/boom.html">Berkeley Out-of-Order Machine</a>. <br><br>
+
+                        Our I$ and D$ were designed with prefetching and non-blocking mechanisms, enhancing data throughput. 
                         Memory handling was enhanced by implementing miss status handling registers (MSHRs) to 
                         reduce stalls caused by cache misses. Performance analysis revealed improvements in cycles per instruction (CPI) compared to 
                         baseline in-order designs, particularly on benchmarks leveraging instruction-level parallelism (ILP). However, challenges 
