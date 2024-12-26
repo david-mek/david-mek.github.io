@@ -64,7 +64,7 @@
                     <h4 class="exp-date">May - Aug. 2024</h4>
                     <p class="description hidden">During this internship, I was tasked with automating an existing workflow for a Neural Processing Unit's SDK for
                        PPA (power, performance, and area) analysis. This involved modifying memory map tables, generating linker scripts, 
-                       compiling TensorFlow Lite neural networks into binary executables for the hardware, running SystemC simulations, 
+                       compiling TensorFlow Lite neural networks into binary executables for the hardware, running <a href="https://en.wikipedia.org/wiki/SystemC">SystemC</a> simulations, 
                        scraping simulation logs for performance data, generating/simulating parameterizable RTL, and performing power 
                        usage analysis. There was a large amount of work done with Cadence tools as well as Cadence DSPs. I also did
                        profiling and optimizations on an existing <span style="font-family: 'Courier New', monospace;">CUDA</span> and 
@@ -230,22 +230,60 @@
                     </h3>
                     <h4 class="proj-title">Several academic projects</h4>
                     <h4 class="proj-date">Jan - Mar. 2024</h4>
-                    <p>
-                        
+                    <p class="description hidden">
+                        Over the course of several projects, I iteratively implemented an optimizing compiler which supported
+                        a sizeable subset of the <span style="font-family: 'Courier New', monospace;">C</span> language 
+                        (which we dubbed <span style="font-family: 'Courier New', monospace;">Oat</span>) to <span style="font-family: 'Courier New', monospace;">x86-64</span> machine code.
+                        The compiler was entirely implemented in <span style="font-family: 'Courier New', monospace;">OCaml</span>
+                        and followed the <a href="https://wiki.osdev.org/System_V_ABI">AMD64 System V ABI</a> calling conventions. It was written in the following phases. <br><br>
+
+                        <span style="font-weight: 800;">Phase 1:</span> 
+                        Implemented an assembler and simulator for a small, idealized subset of the <span style="font-family: 'Courier New', monospace;">x86-64</span> platform 
+                        that will serve as the target language for the compiler.<br><br>
+
+                        <span style="font-weight: 800;">Phase 2:</span>  
+                        Implemented a non-optimizing compiler for a 
+                        <a href="https://maxsnew.com/teaching/eecs-483-wn24/hw3/llvmlite.html#llvmlite">subset of the <span style="font-family: 'Courier New', monospace;">LLVM</span> IR language</a> 
+                        (dubbed <span style="font-family: 'Courier New', monospace;">LLVMlite</span>) with <span style="font-family: 'Courier New', monospace;">x86-64</span> as the target. 
+                        At this point, the compiler's backend was largely completed.<br><br>
+
+                        <span style="font-weight: 800;">Phase 3:</span>  
+                        Implemented a non-optimizing compiler for <span style="font-family: 'Courier New', monospace;">Oat</span>
+                        with <span style="font-family: 'Courier New', monospace;">LLVMlite</span> as the target. At this point,
+                        the compiler's frontend was largely completed and it supported compiling simple <span style="font-family: 'Courier New', monospace;">Oat</span> programs. 
+                        <a href="https://maxsnew.com/teaching/eecs-483-wn24/_downloads/5e47632c7bfbf5de04616b2dbb587d87/oat-v1.pdf">[Oatv1 rules]</a><br><br>
+
+                        <span style="font-weight: 800;">Phase 4:</span>  
+                        Implemented new <span style="font-family: 'Courier New', monospace;">Oat</span> language features
+                        such as structs, function pointers, distinguishing between possibly null and definitely not null references,
+                        array initializers, and updating the type system for supporting all the prior additions.
+                        <a href="https://maxsnew.com/teaching/eecs-483-wn24/_downloads/cc6e255671082a548f10c34aa4ff92f5/oat-v2.pdf">[Oatv2 rules]</a><br><br>
+
+                        <span style="font-weight: 800;">Phase 5:</span>  
+                        Implemented compiler optimizations at the <span style="font-family: 'Courier New', monospace;">LLVMlite</span> IR
+                        level in the backend. These included dataflow analysis, dead code elimination, constant propogation, and a proper 
+                        register allocation heuristic instead of placing all variables and intermediate values on the stack. For register
+                        allocation, I chose to implement <a href="https://www.inf.ed.ac.uk/teaching/courses/copt/lecture-7.pdf">Chaitin's algorithm</a> 
+                        with coservative node coalescing.
                     </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
                 </li>
                 <li>
                     <h3>Multithreaded network file server</h3>
                     <h4 class="proj-title">Academic project</h4>
                     <h4 class="proj-date">Nov - Dec. 2023</h4>
-                    <p>
-                        
+                    <p class="description hidden">
+                        Implemented an <a href="https://en.wikipedia.org/wiki/ACID">ACID</a> compliant network file server using 
+                        <span style="font-family: 'Courier New', monospace;">C++20</span> and the 
+                        <a href="https://www.boost.org/">Boost libraries</a> for regex, thread, and reader-writer lock functionality. 
+                        The file server can be run on any x86 Unix machine, utilizes BSD sockets for interprocess network communication, 
+                        and has several design considerations for fault tolerance.
                     </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
                 </li>
                 <li>
                     <h3>
-                        MNIST-Fashion CNN optimized w/ 
-                        <span style="font-family: 'Courier New', monospace;">CUDA</span>
+                        CNN forwarding layers optimized w/ Nvidia GPUs
                     </h3>
                     <h4 class="proj-title">Academic project</h4>
                     <h4 class="proj-date">Nov. 2023</h4>
