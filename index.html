@@ -27,10 +27,12 @@
         <div style="height: 1rem;"></div>
         <section class="about">
             <h2>1. About me</h2>
-            <p>I am a computer science and engineering undergraduate at the University of Michigan 
+            <p>
+                I am a computer science and engineering undergraduate at the University of Michigan 
                 about to complete my bachelor's degree in May 2025. I am interested in computer science theory, 
                 low-level software, and computer architecture. I am focused on developing skills in the 
-                intersection of those areas, particularly high-performance computing and system architecture.</p>
+                intersection of those areas, particularly high-performance computing and system architecture.
+            </p>
             <h3>Email</h3>
             <p>davidmek@umich.edu <a href="mailto:davidmek@umich.edu">[mailto]</a></p>
             <h3>Photo</h3>
@@ -66,8 +68,7 @@
                        PPA (power, performance, and area) analysis. This involved modifying memory map tables, generating linker scripts, 
                        compiling TensorFlow Lite neural networks into binary executables for the hardware, running <a href="https://en.wikipedia.org/wiki/SystemC">SystemC</a> simulations, 
                        scraping simulation logs for performance data, generating/simulating parameterizable RTL, and performing power 
-                       usage analysis. There was a large amount of work done with Cadence tools as well as Cadence DSPs. I also did
-                       profiling and optimizations on an existing <span style="font-family: 'Courier New', monospace;">CUDA</span> and 
+                       usage analysis. I also profiled and optimized an existing <span style="font-family: 'Courier New', monospace;">CUDA</span> and 
                        <span style="font-family: 'Courier New', monospace;">C++</span> codebase for 5G signal processing. This involved 
                        downconversion, OFDM via FFTs, channel estimation, demodulation, and EVM calculations on Nvidia GPUs. 
                        The GPU kernels were profiled with a mixture of Nsight Systems, Nsight Compute, roofline analysis, and 
@@ -82,7 +83,7 @@
                     <p class="description hidden">During this internship, I worked on the product security team and developed a 
                         <a href="https://en.wikipedia.org/wiki/SystemC">SystemC</a> model of an elliptic curve 
                        cryptographic block in an embedded security enclave to aid in its functional verification and NIST certification.
-                       Super scary secret stuff.
+                       The model was designed with transaction level granularity.
                     </p>
                     <button onclick="toggleDescription(this)" class="desc-button">Details</button>
                 </li>
@@ -139,7 +140,7 @@
                     <h4 class="proj-title">Academic project</h4>
                     <h4 class="proj-date">Nov. 2024</h4>
                     <p class="description hidden">
-                        In this project, I implemented a Paxos-based key/value storage system that ensures high reliability and fault 
+                        I implemented a Paxos-based key/value storage system that ensures high reliability and fault 
                         tolerance. The system replaces a single master view server with Paxos to manage consensus, enabling all replicas 
                         to process client requests in a consistent order without relying on a single point of failure. My work involved 
                         designing and implementing a Paxos library that supports concurrent agreement across multiple instances, 
