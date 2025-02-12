@@ -18,7 +18,7 @@
     <div class="centered-wrapper">
         <div class="name">
             <h1 style="font-size: 2.5rem;">David Mekhtiev</h1>
-            <p>Last updated: Dec. 2024 • <span id="current-date"></span></p>
+            <p>Last updated: Feb. 2025 • <span id="current-date"></span></p>
             <p>Jump to 
                 <a href="#experience">[experience]</a>
                 <a href="#projects">[projects]</a>
@@ -49,13 +49,13 @@
             <ul>
                 <li>
                     <h3>Teaching Assistant</h3>
-                    <h4 class="exp-title">EECS 483 (Compiler Construction) 
+                    <h4 class="exp-title">EECS 483 (Compiler Design) 
                         <a href="https://maxsnew.com/teaching/eecs-483-wn25/index.html" style="font-style: normal;">[course site]</a>
                         <a href="https://maxsnew.com/" style="font-style: normal;">[prof site]</a>
                     </h4>
                     <h4 class="exp-date">Presently involved.</h4>
                     <p class="description hidden">Working with Professor Max New to provide office hours, responses to student questions on Piazza, 
-                       leading a discussion section, and general support for course logistics during the Winter 2025 semester.</p>
+                       a weekly discussion section, exam proctoring/grading, and general support for course logistics during the Winter 2025 semester.</p>
                     <button onclick="toggleDescription(this)" class="desc-button">Details</button>
                 </li>
                 <li>
@@ -290,8 +290,18 @@
                     <h4 class="proj-title">Academic project</h4>
                     <h4 class="proj-date">Nov. 2023</h4>
                     <p>
-                        
+                        Given a pretrained convolutional neural network written in <span style="font-family: 'Courier New', monospace;">CUDA</span>
+                        for classifying MNIST-Fashion clothing images into one of several discrete bins, I optimized the provided forwarding kernel 
+                        (it comprised 98.95% of total execution time) by utilizing several GPU optimization techniques. These included placing constant 
+                        filter values into the GPUs constant memory (which has orders of magnitude less access cycles), rewriting memory access patterns 
+                        such that they were coalesced and minimized memory bank conflicts, unrolling loops, and rewriting the algorithm to leverage
+                        the massive parallel compute capability of the Tesla V100 datacenter GPU I worked with. In fact, I was able to parallelize
+                        the work for a batch of 10,000 images, the subsequent iterations over all output feature maps, and the iterations over each
+                        individual pixel. In summary, although the theoretical amount of calculations did not change in any of the kernel invocations,
+                        it was rewritten in such a way that the V100 scheduled as much work as possible across its 80 streaming multiprocessors. The final
+                        kernel ran in 0.17s across both passes, whereas the original implementation took 13.78s in total (~81x speedup).
                     </p>
+                    <button onclick="toggleDescription(this)" class="desc-button">Details</button>
                 </li>
                 <li>
                     <h3>Unix virtual memory pager</h3>
