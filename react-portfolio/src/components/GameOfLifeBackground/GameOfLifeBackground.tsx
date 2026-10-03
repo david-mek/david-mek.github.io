@@ -17,6 +17,10 @@ import { readRootScale } from '@/hooks/useRootScale';
 const PUFFER_RLE = '3bo$4bo$o3bo$b4o4$o$b2o$2bo$2bo$bo3$3bo$4bo$o3bo$b4o!';
 
 const VISIBLE_COLS = 128;
+// Most rows ever shown. On tall, narrow screens (phones) cells grow so no more than this many rows
+// are visible — keeping the grid's top/bottom edges (where cells die) out of view — and fewer
+// columns show instead. The visible area always stays inside the verified window.
+const MAX_VISIBLE_ROWS = 80;
 const LEFT_MARGIN = 24;
 const RIGHT_MARGIN = 120;
 const SIM_COLS = LEFT_MARGIN + VISIBLE_COLS + RIGHT_MARGIN;
@@ -188,7 +192,8 @@ export function GameOfLifeBackground() {
       ctx.fillStyle = scheme === 'dark' ? '#111111' : '#ffffff';
       ctx.fillRect(0, 0, w, h);
 
-      const cell = w / VISIBLE_COLS;
+      const cell = Math.max(w / VISIBLE_COLS, h / MAX_VISIBLE_ROWS);
+      const visCols = Math.min(VISIBLE_COLS, Math.ceil(w / cell));
       const visRows = Math.ceil(h / cell);
       const rowStart = Math.floor((SIM_ROWS - visRows) / 2);
       // Center the window vertically: offset by the fractional part of the extra height.
@@ -198,7 +203,7 @@ export function GameOfLifeBackground() {
       ctx.strokeStyle = scheme === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(20,20,20,0.05)';
       ctx.lineWidth = unit;
       ctx.beginPath();
-      for (let c = 0; c <= VISIBLE_COLS; c++) {
+      for (let c = 0; c <= visCols; c++) {
         const x = c * cell;
         ctx.moveTo(x, 0);
         ctx.lineTo(x, h);
@@ -221,7 +226,7 @@ export function GameOfLifeBackground() {
           continue;
         }
         const rowBase = sy * SIM_COLS + LEFT_MARGIN;
-        for (let c = 0; c < VISIBLE_COLS; c++) {
+        for (let c = 0; c < visCols; c++) {
           const i = rowBase + c;
           const a0 = sim.prev[i] ? ageAlpha(sim.prevAge[i]) : 0;
           const a1 = sim.cur[i] ? ageAlpha(sim.age[i]) : 0;

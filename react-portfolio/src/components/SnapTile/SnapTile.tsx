@@ -1,6 +1,7 @@
 import { Box } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const MotionDiv = motion.div;
 
@@ -10,16 +11,19 @@ type SnapTileProps = {
 
 export function SnapTile({ children }: SnapTileProps) {
   const ref = useRef<HTMLDivElement | null>(null);
+  // On phones tiles grow to fit their content (at least one screen tall), so a tile can be taller
+  // than the viewport; a lower threshold still lets those fade in.
+  const isMobile = useIsMobile();
   const inView = useInView(ref, {
-    amount: 0.6,
+    amount: isMobile ? 0.25 : 0.6,
   });
 
   return (
     <Box
       ref={ref}
       style={{
-        height: '100vh',
-        minHeight: '100vh',
+        height: isMobile ? 'auto' : '100vh',
+        minHeight: isMobile ? '100svh' : '100vh',
         width: '100%',
         scrollSnapAlign: 'start',
         position: 'relative',
@@ -38,7 +42,8 @@ export function SnapTile({ children }: SnapTileProps) {
         }}
         style={{
           width: '100%',
-          height: '100%',
+          height: isMobile ? 'auto' : '100%',
+          minHeight: isMobile ? '100svh' : undefined,
         }}
       >
         {children}

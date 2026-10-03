@@ -26,6 +26,7 @@ import {
 } from '../Terminal/Terminal';
 import { VantaNETBackground } from '../VantaNETBackground/VantaNETBackground';
 import { PROJECTS, TOPICS, type Project, type Topic } from '@/data/projects';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import classes from './Projects.module.css';
 
 const MotionDiv = motion.div;
@@ -153,6 +154,7 @@ export function Projects() {
   const param = searchParams.get('topic');
   const topic: Topic | 'all' = TOPICS.some((t) => t.id === param) ? (param as Topic) : 'all';
 
+  const isMobile = useIsMobile();
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   // Keep the last opened project around so the modal can animate out with its content.
   const [lastOpen, setLastOpen] = useState<Project | null>(null);
@@ -200,7 +202,23 @@ export function Projects() {
         </Stack>
 
         <Chip.Group multiple={false} value={topic} onChange={setTopic}>
-          <Group gap="xs" mb="xl">
+          {/* Phones: one row that scrolls sideways instead of a tall stack of chips. */}
+          <Group
+            gap="xs"
+            mb="xl"
+            wrap={isMobile ? 'nowrap' : 'wrap'}
+            style={
+              isMobile
+                ? {
+                    overflowX: 'auto',
+                    scrollbarWidth: 'none',
+                    marginInline: 'calc(-1 * var(--mantine-spacing-xl))',
+                    paddingInline: 'var(--mantine-spacing-xl)',
+                    paddingBlock: rem(2),
+                  }
+                : undefined
+            }
+          >
             <Chip value="all" color={lightColor} radius="md" variant="outline" ff="monospace">
               all ({PROJECTS.length})
             </Chip>
@@ -248,7 +266,7 @@ export function Projects() {
         opened={openSlug !== null}
         onClose={() => setOpenSlug(null)}
         withCloseButton={false}
-        size={rem(860)}
+        size={isMobile ? '100%' : rem(860)}
         padding={0}
         radius={12}
         centered

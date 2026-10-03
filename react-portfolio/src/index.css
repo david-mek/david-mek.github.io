@@ -11,6 +11,14 @@ html {
   font-size: max(12px, min(100vw / 108, 100vh / 62));
 }
 
+/* Phones get their own layout (see useIsMobile) at a normal, readable 16px instead of the
+   scaled-down desktop design. Keep the breakpoint in sync with MOBILE_QUERY. */
+@media (max-width: 48em) {
+  html {
+    font-size: 16px;
+  }
+}
+
 @media (hover: hover) and (pointer: fine) {
   html,
   body,

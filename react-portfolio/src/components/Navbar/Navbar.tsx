@@ -33,6 +33,7 @@ const MotionBox = motion.div;
 
 // Client side navigation
 import { useNavigate } from 'react-router-dom'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 // My custom gradients.
 const crimsonGradient = { from: '#fe6969', to: '#C90016', deg: 90 };
@@ -95,6 +96,8 @@ export function Navbar() {
   // |       THEME TOGGLE       | 
   // ----------------------------
   const {colorScheme, toggleColorScheme} = useMantineColorScheme();
+  // On phones the pill spans the screen (minus a margin) with compact buttons, on one line.
+  const isMobile = useIsMobile();
 
   // ----------------------------
   // |            UI            | 
@@ -106,12 +109,12 @@ export function Navbar() {
         top: rem(16),
         left: '50%',
         transform: 'translateX(-50%)',
-        width: '50vw',
+        width: isMobile ? 'calc(100vw - 2rem)' : '50vw',
         zIndex: 1000,
       }}
     >
       <Container
-        px="lg"
+        px={isMobile ? 'sm' : 'lg'}
         py="xs"
         style={{
           backdropFilter: `blur(${rem(10)})`,
@@ -128,7 +131,7 @@ export function Navbar() {
           boxShadow: `0 0 ${rem(20)} rgba(33, 150, 2243, 0.6)`
         }}
       >
-        <Group justify="space-between" align="center">
+        <Group justify="space-between" align="center" wrap="nowrap">
 
           {/* Logo */}
           <Group>
@@ -136,7 +139,7 @@ export function Navbar() {
           </Group>
 
           {/* Navigation */}
-          <Group gap="s">
+          <Group gap={isMobile ? 0 : 's'} wrap="nowrap">
             <MotionBox
               whileHover={{ scale: 1.12 }}
               whileTap={{ scale: 0.98 }}
@@ -147,6 +150,7 @@ export function Navbar() {
                 onClick={() => navigate('/')}
                 color={darkerColor}
                 radius='lg'
+                size={isMobile ? 'compact-md' : 'sm'}
               >
                 <Text
                   variant="gradient"
@@ -168,6 +172,7 @@ export function Navbar() {
                 onClick={() => navigate('/projects')}
                 color={darkerColor}
                 radius='lg'
+                size={isMobile ? 'compact-md' : 'sm'}
               >
                 <Text
                   variant="gradient"
@@ -189,6 +194,7 @@ export function Navbar() {
                 onClick={() => navigate('/blog')}
                 color={darkerColor}
                 radius='lg'
+                size={isMobile ? 'compact-md' : 'sm'}
               >
                 <Text
                   variant="gradient"

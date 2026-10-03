@@ -26,6 +26,7 @@ import {
   IconBrandLinkedin,
 } from '@tabler/icons-react';
 
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { SnapTile } from '../SnapTile/SnapTile';
 import {
   blueGradient,
@@ -45,6 +46,11 @@ import { GameOfLifeBackground } from '../GameOfLifeBackground/GameOfLifeBackgrou
 
 const MotionDiv = motion.div;
 
+// Sizing for a full-tile pane: fills its 100vh tile on desktop; on phones it's at least one screen
+// tall and grows with its content.
+const paneHeight = (isMobile: boolean) =>
+  isMobile ? { minHeight: '100svh' } : { height: '100%' };
+
 const cardVariants = {
   enter: (dir: number) => ({ opacity: 0, x: dir * 40 }),
   center: { opacity: 1, x: 0 },
@@ -56,6 +62,10 @@ function FilesPane() {
   const [direction, setDirection] = useState(1);
   const paneRef = useRef<HTMLDivElement | null>(null);
   const inView = useInView(paneRef, { amount: 0.45 });
+  const isMobile = useIsMobile();
+  // On phones, label/value rows (e.g. school + location) wrap instead of squeezing side by side.
+  const rowWrap = isMobile ? 'wrap' : 'nowrap';
+  const rowGap = isMobile ? 4 : 'md';
 
   const navigate = (next: number) => {
     setDirection(next > activeIndex ? 1 : -1);
@@ -68,7 +78,7 @@ function FilesPane() {
       content: (
         <Stack gap="md">
           <Stack gap={2}>
-            <Group justify="space-between" wrap="nowrap">
+            <Group justify="space-between" wrap={rowWrap} gap={rowGap}>
               <Text fw={700} size="1rem" data-cursor-text>
                 University of Pennsylvania
               </Text>
@@ -76,7 +86,7 @@ function FilesPane() {
                 Philadelphia, PA
               </Text>
             </Group>
-            <Group justify="space-between" wrap="nowrap">
+            <Group justify="space-between" wrap={rowWrap} gap={rowGap}>
               <Text size="sm" c="dimmed" data-cursor-text fs="italic">
                 M.S.E. in Computer Science, Software Systems & Cybersecurity focus.
               </Text>
@@ -84,7 +94,7 @@ function FilesPane() {
                 Jan 2027 - Expected May 2028
               </Text>
             </Group>
-            <Group justify="space-between" wrap="nowrap">
+            <Group justify="space-between" wrap={rowWrap} gap={rowGap}>
               <Text
                 ff="monospace"
                 size="sm"
@@ -99,7 +109,7 @@ function FilesPane() {
 
             <Space h="0.5rem" />
 
-            <Group justify="space-between" wrap="nowrap">
+            <Group justify="space-between" wrap={rowWrap} gap={rowGap}>
               <Text fw={700} size="1rem" data-cursor-text>
                 University of Michigan
               </Text>
@@ -107,7 +117,7 @@ function FilesPane() {
                 Ann Arbor, MI
               </Text>
             </Group>
-            <Group justify="space-between" wrap="nowrap">
+            <Group justify="space-between" wrap={rowWrap} gap={rowGap}>
               <Text size="sm" c="dimmed" data-cursor-text fs="italic">
                 B.S.E. in Computer Science & Engineering.
               </Text>
@@ -115,12 +125,12 @@ function FilesPane() {
                 August 2021 - May 2025
               </Text>
             </Group>
-            <Group justify="space-between" wrap="nowrap">
+            <Group justify="space-between" wrap={rowWrap} gap={rowGap}>
               <Text size="sm" c="dimmed" data-cursor-text>
                 Awards: Dean's list, Engineering Scholarship of Honor.
               </Text>
             </Group>
-            <Group justify="space-between" wrap="nowrap">
+            <Group justify="space-between" wrap={rowWrap} gap={rowGap}>
               <Text
                 ff="monospace"
                 size="sm"
@@ -237,7 +247,7 @@ function FilesPane() {
       content: (
         <Box
           style={{
-            maxHeight: '45vh',
+            maxHeight: isMobile ? 'none' : '45vh',
             overflowY: 'auto',
             paddingRight: 'var(--mantine-spacing-sm)',
             scrollbarWidth: 'thin',
@@ -356,7 +366,7 @@ function FilesPane() {
               },
             ].map((company) => (
               <Stack key={company.org} gap="sm">
-                <Group justify="space-between" wrap="nowrap">
+                <Group justify="space-between" wrap={rowWrap} gap={rowGap}>
                   <Text fw={700} size="1rem" data-cursor-text>
                     {company.org}
                   </Text>
@@ -398,7 +408,7 @@ function FilesPane() {
                           }}
                         />
 
-                        <Group justify="space-between" wrap="nowrap" align="flex-start" mb={6}>
+                        <Group justify="space-between" wrap={rowWrap} gap={rowGap} align="flex-start" mb={6}>
                           <Text size="sm" fw={700} variant="gradient" gradient={blueGradient} data-cursor-text>
                             {role.title}
                           </Text>
@@ -436,12 +446,15 @@ function FilesPane() {
       ref={paneRef}
       style={{
         width: '100%',
-        height: '100%',
+        ...paneHeight(isMobile),
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         gap: '1.5rem',
-        padding: '2rem',
+        // Phones: the window takes the full width and the arrows sit centered above it, like tabs
+        // (the experience view is long, so arrows below would be a long scroll away).
+        flexWrap: isMobile ? 'wrap' : 'nowrap',
+        padding: isMobile ? '6rem 1rem 2rem' : '2rem',
         position: 'relative',
         zIndex: 1,
       }}
@@ -450,12 +463,12 @@ function FilesPane() {
         whileHover={activeIndex > 0 ? { scale: 1.12 } : undefined}
         whileTap={activeIndex > 0 ? { scale: 0.96 } : undefined}
         transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-        style={{ flexShrink: 0 }}
+        style={{ flexShrink: 0, order: isMobile ? -1 : 0 }}
       >
         <ActionIcon
           variant="gradient"
           gradient={blueGradient}
-          size="2rem"
+          size={isMobile ? '2.5rem' : '2rem'}
           radius="md"
           onClick={() => navigate(activeIndex - 1)}
           disabled={activeIndex === 0}
@@ -467,13 +480,17 @@ function FilesPane() {
 
       {/* Padding + negative margin gives the window shadow room so overflow:hidden doesn't clip it */}
       <Box
-        style={{
-          flex: 1,
-          maxWidth: 'calc(min(56.25rem, 76vw) + 7rem)',
-          overflow: 'hidden',
-          padding: '3.5rem',
-          margin: '-3.5rem',
-        }}
+        style={
+          isMobile
+            ? { flex: '1 1 100%', overflow: 'hidden', padding: '1rem', margin: '-1rem' }
+            : {
+                flex: 1,
+                maxWidth: 'calc(min(56.25rem, 76vw) + 7rem)',
+                overflow: 'hidden',
+                padding: '3.5rem',
+                margin: '-3.5rem',
+              }
+        }
       >
         <AnimatePresence mode="wait" initial={false} custom={direction}>
           <MotionDiv
@@ -499,12 +516,12 @@ function FilesPane() {
         whileHover={activeIndex < files.length - 1 ? { scale: 1.12 } : undefined}
         whileTap={activeIndex < files.length - 1 ? { scale: 0.96 } : undefined}
         transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-        style={{ flexShrink: 0 }}
+        style={{ flexShrink: 0, order: isMobile ? -1 : 0 }}
       >
         <ActionIcon
           variant="gradient"
           gradient={blueGradient}
-          size="2rem"
+          size={isMobile ? '2.5rem' : '2rem'}
           radius="md"
           onClick={() => navigate(activeIndex + 1)}
           disabled={activeIndex === files.length - 1}
@@ -521,18 +538,19 @@ function AboutMachinePane() {
   const cardRef = useRef<HTMLDivElement | null>(null);
   const paneRef = useRef<HTMLDivElement | null>(null);
   const inView = useInView(paneRef, { amount: 0.55 });
+  const isMobile = useIsMobile();
 
   return (
     <Box
       ref={paneRef}
       style={{
         width: '100%',
-        height: '100%',
+        ...paneHeight(isMobile),
         background: 'var(--mantine-color-body)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '2rem',
+        padding: isMobile ? '6rem 1rem 2rem' : '2rem',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -550,8 +568,14 @@ function AboutMachinePane() {
           <Stack gap="lg" pt="md">
             <TypedPrompt text="> whoami" active={inView} />
 
-            <Group align="center" wrap="nowrap" gap="xl">
-              <Box miw={180} style={{ display: 'flex', justifyContent: 'center' }}>
+            {/* Phones: photo stacked above the bio instead of beside it. */}
+            <Group
+              align="center"
+              wrap={isMobile ? 'wrap' : 'nowrap'}
+              justify={isMobile ? 'center' : undefined}
+              gap="xl"
+            >
+              <Box miw={isMobile ? 140 : 180} style={{ display: 'flex', justifyContent: 'center' }}>
                 <Indicator
                   inline
                   size={16}
@@ -561,11 +585,16 @@ function AboutMachinePane() {
                   withBorder
                   processing
                 >
-                  <Avatar src={picture_of_me} alt="David Mekhtiev" radius="xl" size={180} />
+                  <Avatar
+                    src={picture_of_me}
+                    alt="David Mekhtiev"
+                    radius="xl"
+                    size={isMobile ? 140 : 180}
+                  />
                 </Indicator>
               </Box>
 
-              <Stack gap="sm" flex={1}>
+              <Stack gap="sm" flex={isMobile ? '1 1 100%' : 1}>
                 <Title data-cursor-text order={2} fw={500}>
                   About me
                 </Title>
@@ -617,10 +646,13 @@ function AboutMachinePane() {
 
 // Keeps the scroller snapped to the current tile when its height changes (browser zoom,
 // window resize). Browsers don't reliably re-snap, leaving the previous tile peeking in.
-function useResnapOnResize(scrollerRef: React.RefObject<HTMLDivElement | null>) {
+function useResnapOnResize(
+  scrollerRef: React.RefObject<HTMLDivElement | null>,
+  enabled: boolean
+) {
   useEffect(() => {
     const scroller = scrollerRef.current;
-    if (!scroller) {
+    if (!scroller || !enabled) {
       return;
     }
 
@@ -645,20 +677,24 @@ function useResnapOnResize(scrollerRef: React.RefObject<HTMLDivElement | null>) 
       scroller.removeEventListener('scroll', onScroll);
       ro.disconnect();
     };
-  }, [scrollerRef]);
+  }, [scrollerRef, enabled]);
 }
 
 export function About() {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
-  useResnapOnResize(scrollerRef);
+  const isMobile = useIsMobile();
+  // Phone tiles have varying heights, so the fixed-height re-snap logic doesn't apply.
+  useResnapOnResize(scrollerRef, !isMobile);
 
   return (
     <Box
       ref={scrollerRef}
       style={{
-        height: '100vh',
+        // dvh tracks the phone's visible viewport as the browser toolbar shows and hides.
+        height: isMobile ? '100dvh' : '100vh',
         overflowY: 'auto',
-        scrollSnapType: 'y mandatory',
+        // Tiles can be taller than the screen on phones, so snapping only nudges there.
+        scrollSnapType: isMobile ? 'y proximity' : 'y mandatory',
         scrollBehavior: 'smooth',
         WebkitOverflowScrolling: 'touch',
       }}
@@ -668,7 +704,7 @@ export function About() {
           style={{
             position: 'relative',
             width: '100%',
-            height: '100%',
+            ...paneHeight(isMobile),
             overflow: 'hidden',
             background: '#ffffff',
           }}
@@ -680,7 +716,7 @@ export function About() {
               position: 'relative',
               zIndex: 1,
               width: '100%',
-              height: '100%',
+              ...paneHeight(isMobile),
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -697,13 +733,17 @@ export function About() {
                   fontFamily: 'var(--mantine-font-family-monospace)',
                   lineHeight: 1.2,
                   paddingBottom: '0.1em',
+                  // When it wraps (phones), split it into two even lines.
+                  textWrap: 'balance',
                 }}
-                size="1.5rem"
+                size={isMobile ? '1.1rem' : '1.5rem'}
+                ta="center"
+                px={isMobile ? 'md' : 0}
                 variant="gradient"
                 gradient={blueGradient}
                 fw={700}
               >
-                Full time engineer. Part time tinkerer.
+                Engineering from transistors to TypeScript.
               </Text>
 
               <Space h="1rem" />
@@ -791,7 +831,7 @@ export function About() {
           style={{
             position: 'relative',
             width: '100%',
-            height: '100%',
+            ...paneHeight(isMobile),
             overflow: 'hidden',
           }}
         >
