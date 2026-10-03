@@ -1,0 +1,24 @@
+/*
+  Scale the whole site so it looks the way it does on the reference display: a 16" M2
+  MacBook Pro at its default resolution, whose browser window is about 1728 × 992 CSS px.
+  1rem is 16px there and grows/shrinks with whichever window dimension is tighter, so each
+  full-screen tile shows the same content on any screen. It stops shrinking at 12px (0.75×).
+
+  108 = 1728 / 16 and 62 = 992 / 16. Everything sized in rem (Mantine's spacing, font sizes,
+  rem() values) follows this automatically; JS-drawn pieces read it via useRootScale().
+*/
+html {
+  font-size: max(12px, min(100vw / 108, 100vh / 62));
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  [role="button"] {
+    cursor: none !important;
+  }
+}
