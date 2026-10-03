@@ -9,7 +9,7 @@ import { iOSPointer as IOSPointer } from './components/CursorFX/iOSPointer';
 
 export default function App() {
   return (
-    <MantineProvider theme={theme}>
+    <MantineProvider theme={theme} defaultColorScheme="auto">
       <CursorProvider>
         <IOSPointer />
         <Router />

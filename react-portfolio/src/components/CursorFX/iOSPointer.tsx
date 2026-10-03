@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'motion/react';
-import { useMantineColorScheme } from '@mantine/core';
+import { useComputedColorScheme } from '@mantine/core';
 import { useRootScale } from '@/hooks/useRootScale';
 import { useCursorContext, type CursorTarget } from './CursorContext';
 
@@ -84,7 +84,8 @@ function detectTarget(el: Element | null): CursorTarget {
 }
 
 export function iOSPointer() {
-  const { colorScheme } = useMantineColorScheme();
+  // The theme actually shown (resolves 'auto' to light/dark from the system setting).
+  const colorScheme = useComputedColorScheme('light', { getInitialValueInEffect: false });
   const { target, setTarget, clearTarget } = useCursorContext();
   const isFinePointer = useIsFinePointer();
   const scale = useRootScale();

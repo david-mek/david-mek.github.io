@@ -16,6 +16,7 @@ import {
   Button,
   Text,
   Container,
+  useComputedColorScheme,
   useMantineColorScheme,
   HoverCard,
 } from '@mantine/core'
@@ -95,7 +96,12 @@ export function Navbar() {
   // ----------------------------
   // |       THEME TOGGLE       | 
   // ----------------------------
-  const {colorScheme, toggleColorScheme} = useMantineColorScheme();
+  // Starts on 'auto' (follows the system). The icon and toggle use the theme actually shown, so
+  // in auto mode the icon is right and the first click always flips what you see; after that the
+  // explicit choice is remembered.
+  const { setColorScheme } = useMantineColorScheme();
+  const colorScheme = useComputedColorScheme('light', { getInitialValueInEffect: false });
+  const toggleColorScheme = () => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
   // On phones the pill spans the screen (minus a margin) with compact buttons, on one line.
   const isMobile = useIsMobile();
 
@@ -215,7 +221,7 @@ export function Navbar() {
               radius="lg"
               onClick={() => toggleColorScheme()}
               gradient={blueGradient}
-              aria-label='Toggle theme.'
+              aria-label={colorScheme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
             >
               {colorScheme === 'dark' ? (
                 <IconSunFilled style={{ width: rem(18), height: rem(18) }} />

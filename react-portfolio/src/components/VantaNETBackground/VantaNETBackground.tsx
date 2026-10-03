@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box, useMantineColorScheme } from '@mantine/core';
+import { Box, useComputedColorScheme } from '@mantine/core';
 import { useIsVisible } from '@/hooks/useIsVisible';
 
 declare global {
@@ -51,7 +51,8 @@ export function VantaNETBackground({
   backgroundLight = '#ffffff',
   backgroundDark = '#111111',
 }: Props) {
-  const { colorScheme } = useMantineColorScheme();
+  // The theme actually shown (resolves 'auto' to light/dark from the system setting).
+  const colorScheme = useComputedColorScheme('light', { getInitialValueInEffect: false });
   const containerRef = useRef<HTMLDivElement | null>(null);
   const effectRef = useRef<{ destroy?: () => void } | null>(null);
   // Vanta has no pause API, so the effect is destroyed off-screen and recreated on return.

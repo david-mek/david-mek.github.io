@@ -5,6 +5,16 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
     <title>David Mekhtiev</title>
+    <!-- Apply the theme before first paint (same logic as Mantine's ColorSchemeScript): the saved
+         choice if there is one, otherwise the system setting. Prevents a white flash in dark mode. -->
+    <script>
+      try {
+        var saved = window.localStorage.getItem('mantine-color-scheme-value');
+        var scheme = saved === 'light' || saved === 'dark' ? saved
+          : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-mantine-color-scheme', scheme);
+      } catch (e) {}
+    </script>
     <meta
       name="description"
       content="David Mekhtiev — hardware & systems engineer. Engineering from transistors to TypeScript: computer architecture, distributed systems, compilers, and the tools in between."

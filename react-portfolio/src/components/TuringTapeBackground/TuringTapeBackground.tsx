@@ -279,7 +279,7 @@
 //   );
 // }
 
-import { Box, useMantineColorScheme } from '@mantine/core';
+import { Box, useComputedColorScheme } from '@mantine/core';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { useIsVisible } from '@/hooks/useIsVisible';
@@ -323,7 +323,8 @@ function buildCells(count: number, startId = 0): TapeCell[] {
 export function TuringTapeBackground({
   machineRef,
 }: TuringTapeBackgroundProps) {
-  const { colorScheme } = useMantineColorScheme();
+  // The theme actually shown (resolves 'auto' to light/dark from the system setting).
+  const colorScheme = useComputedColorScheme('light', { getInitialValueInEffect: false });
 
   const sceneRef = useRef<HTMLDivElement | null>(null);
   const nextIdRef = useRef(100000);

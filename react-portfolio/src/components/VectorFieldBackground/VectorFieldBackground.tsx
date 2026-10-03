@@ -1,4 +1,4 @@
-import { Box, useMantineColorScheme } from '@mantine/core';
+import { Box, useComputedColorScheme } from '@mantine/core';
 import { useEffect, useMemo, useRef } from 'react';
 import { useIsVisible } from '@/hooks/useIsVisible';
 import { readRootScale } from '@/hooks/useRootScale';
@@ -68,7 +68,8 @@ function buildArrowData(): ArrowDatum[] {
 }
 
 export function VectorFieldBackground() {
-  const { colorScheme } = useMantineColorScheme();
+  // The theme actually shown (resolves 'auto' to light/dark from the system setting).
+  const colorScheme = useComputedColorScheme('light', { getInitialValueInEffect: false });
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const colorSchemeRef = useRef(colorScheme);
   const arrows = useMemo(() => buildArrowData(), []);
