@@ -600,7 +600,7 @@ function AboutMachinePane() {
                 </Title>
 
                 <Text data-cursor-text size="md" lh={1.8} c="dimmed">
-                  Hi! My name is David, and I am a recent UMich CSE grad with over a year of industry experience. I am broadly interested in the research and development of performant, 
+                  Hi! My name is David, and I am a UMich CSE grad with over 1.5 years of industry experience. I am broadly interested in the research and development of performant, 
                   reliable, scalable, and maintainable software systems. Outside of the office, I enjoy music, reading, olympic weightlifting, and making occasionally decent art.
                 </Text>
               </Stack>

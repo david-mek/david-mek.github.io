@@ -2,6 +2,7 @@ import { Box, useComputedColorScheme } from '@mantine/core';
 import { useEffect, useRef } from 'react';
 import { useIsVisible } from '@/hooks/useIsVisible';
 import { readRootScale } from '@/hooks/useRootScale';
+import { DARK_BG } from '@/theme';
 
 /*
   Conway's Game of Life with a puffer train that crosses the panel left to right, leaving
@@ -190,7 +191,7 @@ export function GameOfLifeBackground() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const scheme = colorSchemeRef.current;
-      ctx.fillStyle = scheme === 'dark' ? '#111111' : '#ffffff';
+      ctx.fillStyle = scheme === 'dark' ? DARK_BG : '#ffffff';
       ctx.fillRect(0, 0, w, h);
 
       const cell = Math.max(w / VISIBLE_COLS, h / MAX_VISIBLE_ROWS);

@@ -284,6 +284,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { flushSync } from 'react-dom';
 import { useIsVisible } from '@/hooks/useIsVisible';
 import { useRootScale } from '@/hooks/useRootScale';
+import { DARK_BG, DARK_BG_RGB } from '@/theme';
 
 type TapeSymbol = '0' | '1' | '⊢';
 
@@ -555,14 +556,14 @@ export function TuringTapeBackground({
   const tapeBorderColor =
     colorScheme === 'dark' ? 'rgba(255,255,255,0.22)' : 'rgba(127,127,127,0.22)';
   const digitColor = colorScheme === 'dark' ? '#ffffff' : '#000000';
-  const tapeCellBackground = colorScheme === 'dark' ? '#111111' : '#ffffff';
+  const tapeCellBackground = colorScheme === 'dark' ? DARK_BG : '#ffffff';
 
   const bgTapeBorderColor =
     colorScheme === 'dark' ? 'rgba(255,255,255,0.10)' : 'rgba(127,127,127,0.10)';
   const bgDigitColor =
     colorScheme === 'dark' ? 'rgba(255,255,255,0.22)' : 'rgba(0,0,0,0.16)';
   const bgTapeCellBackground =
-    colorScheme === 'dark' ? 'rgba(17,17,17,0.75)' : 'rgba(255,255,255,0.75)';
+    colorScheme === 'dark' ? `rgba(${DARK_BG_RGB}, 0.75)` : 'rgba(255,255,255,0.75)';
 
   const bgCoverage = diagonal + cellH * 2;
   const bgSpacing = BG_ROWS > 1 ? bgCoverage / (BG_ROWS - 1) : 0;

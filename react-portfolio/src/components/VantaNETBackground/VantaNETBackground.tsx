@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, useComputedColorScheme } from '@mantine/core';
 import { useIsVisible } from '@/hooks/useIsVisible';
+import { DARK_BG } from '@/theme';
 
 declare global {
   interface Window {
@@ -49,7 +50,7 @@ function hexToNumber(hex: string) {
 
 export function VantaNETBackground({
   backgroundLight = '#ffffff',
-  backgroundDark = '#111111',
+  backgroundDark = DARK_BG,
 }: Props) {
   // The theme actually shown (resolves 'auto' to light/dark from the system setting).
   const colorScheme = useComputedColorScheme('light', { getInitialValueInEffect: false });

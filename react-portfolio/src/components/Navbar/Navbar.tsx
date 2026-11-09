@@ -34,7 +34,9 @@ const MotionBox = motion.div;
 
 // Client side navigation
 import { useNavigate } from 'react-router-dom'
+import { useMediaQuery } from '@mantine/hooks'
 import { useIsMobile } from '@/hooks/useIsMobile'
+import { DARK_BG_RGB } from '@/theme'
 
 // My custom gradients.
 const crimsonGradient = { from: '#fe6969', to: '#C90016', deg: 90 };
@@ -104,6 +106,14 @@ export function Navbar() {
   const toggleColorScheme = () => setColorScheme(colorScheme === 'dark' ? 'light' : 'dark');
   // On phones the pill spans the screen (minus a margin) with compact buttons, on one line.
   const isMobile = useIsMobile();
+  // Narrow phones (iPhone SE, small Androids) need one size smaller to keep the pill on one line.
+  const isNarrow =
+    useMediaQuery('(max-width: 23.75em)', typeof window !== 'undefined' && window.matchMedia('(max-width: 23.75em)').matches, {
+      getInitialValueInEffect: false,
+    }) ?? false;
+  const navButtonSize = isNarrow ? 'compact-xs' : isMobile ? 'compact-sm' : 'sm';
+  // The labels are Text components with their own size, so they shrink separately.
+  const navTextSize = isNarrow ? 'sm' : undefined;
 
   // ----------------------------
   // |            UI            | 
@@ -112,22 +122,22 @@ export function Navbar() {
     <Box
       style={{
         position: 'fixed',
-        top: rem(16),
+        top: isMobile ? rem(8) : rem(16),
         left: '50%',
         transform: 'translateX(-50%)',
-        width: isMobile ? 'calc(100vw - 2rem)' : '50vw',
+        width: isMobile ? 'calc(100vw - 1rem)' : '50vw',
         zIndex: 1000,
       }}
     >
       <Container
-        px={isMobile ? 'sm' : 'lg'}
+        px={isMobile ? 'xs' : 'lg'}
         py="xs"
         style={{
           backdropFilter: `blur(${rem(10)})`,
           background:
             colorScheme === 'light'
               ? 'rgba(240, 240, 240, 0.5)'
-              : 'rgba(17, 17, 17, 0.7)',
+              : `rgba(${DARK_BG_RGB}, 0.7)`,
           borderRadius: rem(999),
           // crimson
           // border: '1px solid rgba(201, 0, 22, 0.6)',
@@ -156,12 +166,14 @@ export function Navbar() {
                 onClick={() => navigate('/')}
                 color={darkerColor}
                 radius='lg'
-                size={isMobile ? 'compact-md' : 'sm'}
+                size={navButtonSize}
+                px={isMobile ? '0.4rem' : undefined}
               >
                 <Text
                   variant="gradient"
                   gradient={blueGradient}
                   fw={600}
+                  size={navTextSize}
                 >
                   About
                 </Text>
@@ -178,12 +190,14 @@ export function Navbar() {
                 onClick={() => navigate('/projects')}
                 color={darkerColor}
                 radius='lg'
-                size={isMobile ? 'compact-md' : 'sm'}
+                size={navButtonSize}
+                px={isMobile ? '0.4rem' : undefined}
               >
                 <Text
                   variant="gradient"
                   gradient={blueGradient}
                   fw={600}
+                  size={navTextSize}
                 >
                   Projects
                 </Text>
@@ -200,12 +214,14 @@ export function Navbar() {
                 onClick={() => navigate('/blog')}
                 color={darkerColor}
                 radius='lg'
-                size={isMobile ? 'compact-md' : 'sm'}
+                size={navButtonSize}
+                px={isMobile ? '0.4rem' : undefined}
               >
                 <Text
                   variant="gradient"
                   gradient={blueGradient}
                   fw={600}
+                  size={navTextSize}
                 >
                   Blog
                 </Text>
@@ -217,7 +233,7 @@ export function Navbar() {
           <Group>
             <ActionIcon
               variant="gradient"
-              size="lg"
+              size={isMobile ? 'md' : 'lg'}
               radius="lg"
               onClick={() => toggleColorScheme()}
               gradient={blueGradient}

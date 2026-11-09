@@ -71,7 +71,7 @@ function detectTarget(el: Element | null): CursorTarget {
   }
 
   const clickable = el.closest(
-    'a, button, [role="button"], [data-cursor-hover], summary, [tabindex]:not([tabindex="-1"])'
+    'a, button, label, [role="button"], [data-cursor-hover], summary, [tabindex]:not([tabindex="-1"])'
   );
   if (clickable instanceof Element) {
     return {

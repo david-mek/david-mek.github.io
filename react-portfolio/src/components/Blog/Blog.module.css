@@ -1,0 +1,209 @@
+/* Faint static grid behind the blog: calm enough for reading, consistent with the site's grids. */
+.page {
+  min-height: 100vh;
+  background-size: rem(32px) rem(32px);
+  background-image:
+    linear-gradient(to right, var(--grid-line) rem(1px), transparent rem(1px)),
+    linear-gradient(to bottom, var(--grid-line) rem(1px), transparent rem(1px));
+
+  @mixin light {
+    --grid-line: rgb(20, 20, 20, 0.05);
+  }
+
+  @mixin dark {
+    --grid-line: rgb(255, 255, 255, 0.05);
+  }
+}
+
+.content {
+  max-width: rem(1100px);
+  margin-inline: auto;
+  padding: rem(128px) var(--mantine-spacing-xl) rem(96px);
+}
+
+/* Reading column for a post (~70 characters per line by default). The --prose-* variables come
+   from the reader's settings (ReadingSettings.tsx). */
+.article {
+  position: relative;
+  isolation: isolate;
+  max-width: var(--prose-width, rem(760px));
+  transition: max-width 200ms ease;
+
+  /* Blurred, lightly tinted backdrop behind the column so text reads cleanly over the grid.
+     Sits behind the content (z-index -1 within the isolated article) and fades out at the sides. */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0 rem(-48px);
+    z-index: -1;
+    background: color-mix(in srgb, var(--mantine-color-body) 65%, transparent);
+    backdrop-filter: blur(rem(6px));
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 rem(48px),
+      #000 calc(100% - rem(48px)),
+      transparent
+    );
+    pointer-events: none;
+
+    @media (max-width: $mantine-breakpoint-sm) {
+      inset: 0;
+      mask-image: none;
+    }
+  }
+  margin-inline: auto;
+  padding: rem(112px) var(--mantine-spacing-md) rem(96px);
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    padding-top: rem(96px);
+  }
+}
+
+.prose {
+  font-family: var(--prose-font, inherit);
+  font-size: var(--prose-size, var(--mantine-font-size-md));
+  line-height: var(--prose-line-height, 1.75);
+  overflow-wrap: break-word;
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & p,
+  & ul,
+  & ol,
+  & blockquote,
+  & pre,
+  & table,
+  & figure {
+    margin-block: 0 var(--mantine-spacing-md);
+  }
+
+  & ul,
+  & ol {
+    padding-left: var(--mantine-spacing-xl);
+  }
+
+  & li + li {
+    margin-top: rem(4px);
+  }
+
+  & li > p {
+    margin-bottom: rem(4px);
+  }
+
+  & hr {
+    margin-block: var(--mantine-spacing-xl);
+    border: 0;
+    border-top: rem(1px) solid var(--mantine-color-default-border);
+  }
+
+  & blockquote {
+    padding: rem(4px) var(--mantine-spacing-md);
+    border-left: rem(3px) solid #2196f3;
+    color: var(--mantine-color-dimmed);
+  }
+
+  & table {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: var(--mantine-font-size-sm);
+  }
+
+  & th,
+  & td {
+    padding: rem(6px) rem(12px);
+    border: rem(1px) solid var(--mantine-color-default-border);
+  }
+
+  & th {
+    background: rgb(33, 150, 243, 0.08);
+  }
+
+  /* Inline code */
+  & :not(pre) > code {
+    padding: rem(1px) rem(5px);
+    border-radius: rem(4px);
+    font-family: var(--mantine-font-family-monospace);
+    font-size: 0.88em;
+    background: rgb(33, 150, 243, 0.1);
+    color: #2196f3;
+  }
+
+  /* Code blocks */
+  & pre {
+    padding: var(--mantine-spacing-md);
+    overflow-x: auto;
+    border-radius: rem(8px);
+    border: rem(1px) solid var(--mantine-color-default-border);
+    font-family: var(--mantine-font-family-monospace);
+    font-size: var(--mantine-font-size-sm);
+    line-height: 1.6;
+
+    @mixin light {
+      background: #f6f8fa;
+    }
+
+    @mixin dark {
+      background: rgb(255, 255, 255, 0.04);
+    }
+  }
+
+  /* Display math: scroll sideways instead of overflowing on narrow screens. */
+  & :global(.katex-display) {
+    margin-block: var(--mantine-spacing-md);
+    padding-block: rem(4px);
+    overflow: auto hidden;
+  }
+
+  & :global(.katex) {
+    font-size: 1.08em;
+  }
+
+  & figure {
+    margin-inline: 0;
+    text-align: center;
+  }
+
+  & figure img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
+    border-radius: rem(8px);
+    border: rem(1px) solid var(--mantine-color-default-border);
+  }
+
+  & figcaption {
+    margin-top: rem(8px);
+    font-size: var(--mantine-font-size-sm);
+    font-style: italic;
+    color: var(--mantine-color-dimmed);
+  }
+
+  /* Visually hidden, still read by screen readers (e.g. the footnotes section heading). */
+  & :global(.sr-only) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* GitHub-style footnotes */
+  & :global(.footnotes) {
+    margin-top: var(--mantine-spacing-xl);
+    padding-top: var(--mantine-spacing-md);
+    border-top: rem(1px) solid var(--mantine-color-default-border);
+    font-size: var(--mantine-font-size-sm);
+    color: var(--mantine-color-dimmed);
+  }
+}

@@ -94,8 +94,24 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
 }
 
 function ProjectDetails({ project, onClose }: { project: Project; onClose: () => void }) {
+  // Desktop: header stays put and only the write-up scrolls. Phones: the header alone fills most
+  // of the screen, so the whole window content scrolls instead.
+  const isMobile = useIsMobile();
+  const scrollArea = {
+    minHeight: 0,
+    overflowY: 'auto' as const,
+    scrollbarWidth: 'thin' as const,
+    overscrollBehavior: 'contain' as const,
+    paddingRight: 'var(--mantine-spacing-xs)',
+    marginRight: 'calc(-1 * var(--mantine-spacing-xs))',
+  };
+
   return (
-    <TerminalCard p="xl">
+    // Fills the height the modal allows (capped to the viewport); only the write-up scrolls.
+    <TerminalCard
+      p="xl"
+      style={{ display: 'flex', flexDirection: 'column', flex: '1 1 auto', minHeight: 0 }}
+    >
       <UnstyledButton
         onClick={onClose}
         aria-label="Close"
@@ -105,7 +121,11 @@ function ProjectDetails({ project, onClose }: { project: Project; onClose: () =>
           [esc]
         </Text>
       </UnstyledButton>
-      <Stack gap="md" pt="md">
+      <Stack
+        gap="md"
+        pt="md"
+        style={{ flex: '1 1 auto', minHeight: 0, ...(isMobile ? scrollArea : {}) }}
+      >
         <TypedPrompt text={`> cat ~/projects/${project.slug}/README.md`} active speed={35} />
         <Title order={2} fw={600} lh={1.25} data-cursor-text>
           {project.title}
@@ -137,7 +157,7 @@ function ProjectDetails({ project, onClose }: { project: Project; onClose: () =>
           </Group>
         )}
         <Box style={{ height: rem(1), background: 'currentColor', opacity: 0.12 }} />
-        <Stack gap="sm">
+        <Stack gap="sm" style={isMobile ? undefined : { flex: '1 1 auto', ...scrollArea }}>
           {project.details.map((paragraph, i) => (
             <Text key={i} size="sm" lh={1.75} data-cursor-text>
               {paragraph}
@@ -270,9 +290,23 @@ export function Projects() {
         padding={0}
         radius={12}
         centered
+        // Above the fixed navbar (z-index 1000) so it never covers the window's top.
+        zIndex={1100}
         overlayProps={{ backgroundOpacity: 0.35 }}
         transitionProps={{ transition: 'pop', duration: 200 }}
-        styles={{ content: { background: 'transparent', boxShadow: 'none', overflow: 'visible' } }}
+        styles={{
+          // Cap the window to the viewport (minus the modal's margins) and let it shrink to fit;
+          // overflow stays visible so the window's shadow isn't clipped. The write-up scrolls.
+          content: {
+            background: 'transparent',
+            boxShadow: 'none',
+            overflow: 'visible',
+            maxHeight: 'calc(100dvh - 2 * var(--modal-y-offset))',
+            display: 'flex',
+            flexDirection: 'column',
+          },
+          body: { display: 'flex', flexDirection: 'column', flex: '1 1 auto', minHeight: 0 },
+        }}
       >
         {lastOpen && <ProjectDetails project={lastOpen} onClose={() => setOpenSlug(null)} />}
       </Modal>

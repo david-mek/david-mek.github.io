@@ -1,32 +1,30 @@
 /*
-  Scale the whole site so it looks the way it does on the reference display: a 16" M2
-  MacBook Pro at its default resolution, whose browser window is about 1728 × 992 CSS px.
-  1rem is 16px there and grows/shrinks with whichever window dimension is tighter, so each
-  full-screen tile shows the same content on any screen. It stops shrinking at 12px (0.75×).
+  Scale the whole site relative to the reference display: a 16" M2 MacBook Pro at its default
+  resolution, whose browser window is about 1728 × 992 CSS px. There, 1rem is 20px (the design's
+  16px base × 1.25), and it grows/shrinks with whichever window dimension is tighter, so each
+  full-screen tile shows the same content on any screen. It stops shrinking at 15px (0.75×).
 
-  108 = 1728 / 16 and 62 = 992 / 16. Everything sized in rem (Mantine's spacing, font sizes,
+  86.4 = 1728 / 20 and 49.6 = 992 / 20. Everything sized in rem (Mantine's spacing, font sizes,
   rem() values) follows this automatically; JS-drawn pieces read it via useRootScale().
 */
 html {
-  font-size: max(12px, min(100vw / 108, 100vh / 62));
+  font-size: max(15px, min(100vw / 86.4, 100vh / 49.6));
 }
 
-/* Phones get their own layout (see useIsMobile) at a normal, readable 16px instead of the
-   scaled-down desktop design. Keep the breakpoint in sync with MOBILE_QUERY. */
+/* Phones get their own layout (see useIsMobile) at a fixed, readable size (16px × 1.25)
+   instead of the scaled-down desktop design. Keep the breakpoint in sync with MOBILE_QUERY. */
 @media (max-width: 48em) {
   html {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
+/* The custom cursor (iOSPointer) replaces the OS one for mouse/trackpad users. Applied to every
+   element: components like Mantine's Chip set cursor: pointer on their own labels. */
 @media (hover: hover) and (pointer: fine) {
-  html,
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  [role="button"] {
+  *,
+  *::before,
+  *::after {
     cursor: none !important;
   }
 }

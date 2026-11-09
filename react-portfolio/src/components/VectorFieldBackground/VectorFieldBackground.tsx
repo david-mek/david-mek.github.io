@@ -2,6 +2,7 @@ import { Box, useComputedColorScheme } from '@mantine/core';
 import { useEffect, useMemo, useRef } from 'react';
 import { useIsVisible } from '@/hooks/useIsVisible';
 import { readRootScale } from '@/hooks/useRootScale';
+import { DARK_BG } from '@/theme';
 
 const X_MIN = -8;
 const X_MAX = 8;
@@ -127,7 +128,7 @@ export function VectorFieldBackground() {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
       const scheme = colorSchemeRef.current;
-      const bg = scheme === 'dark' ? '#111111' : '#ffffff';
+      const bg = scheme === 'dark' ? DARK_BG : '#ffffff';
       const gridColor =
         scheme === 'dark' ? 'rgba(255,255,255,0.08)' : 'rgba(20,20,20,0.08)';
       const axisTint =
